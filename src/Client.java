@@ -5686,6 +5686,7 @@ public final class Client extends GameShell {
 
     }
 
+    // read packets
     final boolean method403() {
         if (StaticClass54.staticConnection4 == null)
             return false;
@@ -5767,6 +5768,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // setInterface
                 if (staticInt189 == 126) {
                     Actor.staticInt318 = staticPacket3.method467();
                     WorldMapTile.staticInt5 = staticPacket3.method467();
@@ -5793,6 +5795,9 @@ public final class Client extends GameShell {
                     i_33 = staticPacket3.method469();
                     i_4 = staticPacket3.method476();
                     i_35 = staticPacket3.method487();
+
+                    System.out.println(String.format("setInterface(%d, %d, %d, %b)", i_35 >> 16, i_35 & 0xFF, i_4, i_33 == 1));
+
                     nodesub1_75 = (NodeSub1) staticHashTable7.get(i_35);
                     if (nodesub1_75 != null)
                         staticMethod350(nodesub1_75, nodesub1_75.int317 != i_4);
@@ -7930,6 +7935,9 @@ public final class Client extends GameShell {
             Npc npc_4 = staticNpcArray1[i_3];
             int i_5 = staticPacket3.method439();
             int i_6;
+
+            // TODO npc masks
+
             if ((i_5 & 0x4) != 0) {
                 npc_4.int640 = staticPacket3.method477();
                 i_6 = staticPacket3.readIntLE();
