@@ -2219,6 +2219,8 @@ public final class Client extends GameShell {
                         StaticClass54.staticConnection4.read(staticPacket3.buf, 0, staticInt287);
                         staticClass10_1.method320();
                         staticMethod256();
+
+                        // gpi init
                         StaticClass10.staticMethod52(staticPacket3);
                         WM7.staticInt13 = -1;
                         staticMethod295(false);

@@ -34,6 +34,8 @@ public class StaticClass10 {
         player_3.intArray104[0] = i_7 - Class4.staticInt53;
         player_3.int609 = (player_3.intArray104[0] << 7) + (player_3.method696() << 6);
         DataClass14.staticInt156 = (player_3.int683 = b_5 * 612649739) * 649046179;
+
+        // player appearance
         if (staticBufferArray1[i_2] != null)
             player_3.method695(staticBufferArray1[i_2]);
 
