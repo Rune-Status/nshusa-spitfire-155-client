@@ -551,7 +551,7 @@ public class Buffer extends Node {
         buf[off++] = (byte) (i_1 >> 8);
     }
 
-    public int method485() {
+    public int readIntLE() {
         off += 4;
         return ((buf[off - 1] & 0xff) << 24) + ((buf[off - 2] & 0xff) << 16) + ((buf[off - 3] & 0xff) << 8) + (buf[off - 4] & 0xff);
     }

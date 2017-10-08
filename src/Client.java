@@ -7243,7 +7243,7 @@ public final class Client extends GameShell {
                 }
 
                 if (staticInt189 == 193) {
-                    i_33 = staticPacket3.method485();
+                    i_33 = staticPacket3.readIntLE();
                     WM1.staticTask1 = staticTaskManager1.submitDNS(i_33);
                     staticInt189 = -1;
                     return true;
@@ -7294,7 +7294,7 @@ public final class Client extends GameShell {
                 if (staticInt189 == 64) {
                     i_33 = staticPacket3.method441();
                     i_4 = staticPacket3.method476();
-                    i_35 = staticPacket3.method485();
+                    i_35 = staticPacket3.readIntLE();
                     widget_6 = Widget.staticMethod381(i_35);
                     widget_6.int433 = (i_4 << 16) + i_33;
                     staticInt189 = -1;
@@ -7302,12 +7302,12 @@ public final class Client extends GameShell {
                 }
 
                 if (staticInt189 == 20) {
-                    i_33 = staticPacket3.method485();
+                    i_33 = staticPacket3.readIntLE();
                     i_4 = staticPacket3.method476();
                     if (i_4 == 65535)
                         i_4 = -1;
 
-                    i_35 = staticPacket3.method485();
+                    i_35 = staticPacket3.readIntLE();
                     widget_6 = Widget.staticMethod381(i_33);
                     ObjType objtype_7;
                     if (!widget_6.bool34) {
@@ -7360,7 +7360,7 @@ public final class Client extends GameShell {
 
                 if (staticInt189 == 244) {
                     i_33 = staticPacket3.method476();
-                    i_4 = staticPacket3.method485();
+                    i_4 = staticPacket3.readIntLE();
                     widget_5 = Widget.staticMethod381(i_4);
                     if (widget_5.int423 != 1 || widget_5.int409 != i_33) {
                         widget_5.int423 = 1;
@@ -7932,7 +7932,7 @@ public final class Client extends GameShell {
             int i_6;
             if ((i_5 & 0x4) != 0) {
                 npc_4.int640 = staticPacket3.method477();
-                i_6 = staticPacket3.method485();
+                i_6 = staticPacket3.readIntLE();
                 npc_4.int613 = i_6 >> 16;
                 npc_4.int630 = (i_6 & 0xffff) + staticInt166;
                 npc_4.int631 = 0;
