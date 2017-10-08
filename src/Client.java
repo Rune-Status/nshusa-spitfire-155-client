@@ -6164,15 +6164,19 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // varp small
                 if (staticInt189 == 185) {
-                    byte b_107 = staticPacket3.method472();
-                    i_4 = staticPacket3.method478();
-                    StaticClass44.staticIntArray66[i_4] = b_107;
-                    if (StaticClass44.staticIntArray68[i_4] != b_107)
-                        StaticClass44.staticIntArray68[i_4] = b_107;
+                    byte state = staticPacket3.method472();
+                    int id = staticPacket3.method478();
+                    StaticClass44.staticIntArray66[id] = state;
+                    if (StaticClass44.staticIntArray68[id] != state) {
+                        StaticClass44.staticIntArray68[id] = state;
+                    }
 
-                    staticMethod348(i_4);
-                    staticIntArray103[staticInt257++ & 0x1f] = i_4;
+                    System.out.println(String.format("setVarp(%d, %d)", id, state));
+
+                    staticMethod348(id);
+                    staticIntArray103[staticInt257++ & 0x1f] = id;
                     staticInt189 = -1;
                     return true;
                 }
