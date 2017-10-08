@@ -6577,6 +6577,9 @@ public final class Client extends GameShell {
                 if (staticInt189 == 16) {
                     i_33 = staticPacket3.method444();
                     i_4 = staticPacket3.method486();
+
+                    System.out.println(String.format("setInterfaceSets(%d, %d, %d, %d)", i_33 >> 16, i_33 & 0xFF, i_4 >> 16, i_4 & 0xFF));
+
                     NodeSub1 nodesub1_68 = (NodeSub1) staticHashTable7.get(i_33);
                     nodesub1_75 = (NodeSub1) staticHashTable7.get(i_4);
                     if (nodesub1_75 != null)
