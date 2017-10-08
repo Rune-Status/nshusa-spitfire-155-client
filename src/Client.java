@@ -6147,8 +6147,9 @@ public final class Client extends GameShell {
                 if (staticInt189 == 90) {
                     int songId = staticPacket3.method477();
 
-                    if (songId == 65535)
-                        i_33 = -1;
+                    if (songId == 65535) {
+                        songId = -1;
+                    }
 
                     i_4 = staticPacket3.method481();
 
