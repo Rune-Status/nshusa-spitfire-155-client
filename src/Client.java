@@ -6523,14 +6523,17 @@ public final class Client extends GameShell {
                 }
 
                 if (staticInt189 == 9) {
-                    i_33 = staticPacket3.method441();
-                    i_4 = staticPacket3.method486();
-                    StaticClass44.staticIntArray66[i_33] = i_4;
-                    if (StaticClass44.staticIntArray68[i_33] != i_4)
-                        StaticClass44.staticIntArray68[i_33] = i_4;
+                    int id = staticPacket3.method441();
+                    int state = staticPacket3.method486();
+                    StaticClass44.staticIntArray66[id] = state;
+                    if (StaticClass44.staticIntArray68[id] != state) {
+                        StaticClass44.staticIntArray68[id] = state;
+                    }
 
-                    staticMethod348(i_33);
-                    staticIntArray103[staticInt257++ & 0x1f] = i_33;
+                    System.out.println(String.format("setVarp(%d, %d)", id, state));
+
+                    staticMethod348(id);
+                    staticIntArray103[staticInt257++ & 0x1f] = id;
                     staticInt189 = -1;
                     return true;
                 }
