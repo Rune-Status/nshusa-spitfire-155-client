@@ -20,7 +20,7 @@ public class StaticClass10 {
         throw new Error();
     }
 
-    static final void staticMethod52(Packet packet_0) {
+    static final void initGPI(Packet packet_0) {
         packet_0.initBitAccess();
         int i_2 = Client.staticInt293;
         Player player_3 = BufferWrapper.staticPlayer1 = Client.staticPlayerArray1[i_2] = new Player();

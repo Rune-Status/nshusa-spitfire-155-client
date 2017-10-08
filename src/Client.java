@@ -2221,7 +2221,7 @@ public final class Client extends GameShell {
                         staticMethod256();
 
                         // gpi init
-                        StaticClass10.staticMethod52(staticPacket3);
+                        StaticClass10.initGPI(staticPacket3);
                         WM7.staticInt13 = -1;
                         staticMethod295(false);
                         staticInt189 = -1;
@@ -2263,7 +2263,7 @@ public final class Client extends GameShell {
                             i_2 = staticInt287;
                             staticClass10_1.method322();
                             staticMethod257();
-                            StaticClass10.staticMethod52(staticPacket3);
+                            StaticClass10.initGPI(staticPacket3);
                             if (staticPacket3.off != i_2)
                                 throw new RuntimeException();
                         }
@@ -6123,6 +6123,7 @@ public final class Client extends GameShell {
 
                 if (staticInt189 == 222) {
                     i_33 = staticPacket3.method477();
+                    i_33 = -1;
                     if (i_33 == 65535)
                         i_33 = -1;
 
@@ -6879,7 +6880,7 @@ public final class Client extends GameShell {
                     for (i_33 = 0; i_33 < 2048; i_33++)
                         staticPlayerArray1[i_33] = null;
 
-                    StaticClass10.staticMethod52(staticPacket3);
+                    StaticClass10.initGPI(staticPacket3);
                     staticInt189 = -1;
                     return true;
                 }
@@ -8504,6 +8505,9 @@ public final class Client extends GameShell {
         if (i_2 == 28) {
             staticPacket1.writeOpcode(221);
             staticPacket1.writeInt(i_1);
+
+            System.out.println(String.format("buttonClick: interface=%d button=%d", i_1 << 16, i_1 & 0xFFFF));
+
             widget_13 = Widget.staticMethod381(i_1);
             if (widget_13.intArrayArray12 != null && widget_13.intArrayArray12[0][0] == 5) {
                 i_10 = widget_13.intArrayArray12[0][1];
