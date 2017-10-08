@@ -5874,15 +5874,18 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // root interface
                 if (staticInt189 == 30) {
-                    i_33 = staticPacket3.method441();
-                    staticInt241 = i_33;
+                    int rootInterfaceId = staticPacket3.method441();
+                    staticInt241 = rootInterfaceId;
                     method407(false);
-                    staticMethod346(i_33);
+                    staticMethod346(rootInterfaceId);
                     StaticClass15.staticMethod101(staticInt241);
 
                     for (i_4 = 0; i_4 < 100; i_4++)
                         staticBoolArray7[i_4] = true;
+
+                    System.out.println(String.format("setRootInterface(%d)", rootInterfaceId));
 
                     staticInt189 = -1;
                     return true;
