@@ -1,0 +1,15 @@
+params.put("11", "ElZAIrq5NpKN6D3mDdihco3oPeYN2KFy2DCquj7JMmECPmLrDP3Bnw");
+params.put("12", "0");
+params.put("13", ".runescape.com");
+params.put("14", "0");
+params.put("15", "0");
+params.put("1", "false");
+params.put("2", "true");
+params.put("3", "false");
+params.put("4", "5");
+params.put("5", "0");
+params.put("6", "12479");
+params.put("7", "http://www.runescape.com/g=oldscape/slr.ws?order=LPWM");
+params.put("8", "301");
+params.put("9", "");
+params.put("10", "0");
