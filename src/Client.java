@@ -5755,14 +5755,18 @@ public final class Client extends GameShell {
 
                 Widget widget_5;
                 String string_38;
+
+                // interface text
                 if (staticInt189 == 42) {
-                    i_33 = staticPacket3.method444();
-                    string_38 = staticPacket3.method448();
-                    widget_5 = Widget.staticMethod381(i_33);
-                    if (!string_38.equals(widget_5.string25)) {
-                        widget_5.string25 = string_38;
+                    int packed = staticPacket3.method444();
+                    String message = staticPacket3.method448();
+                    widget_5 = Widget.staticMethod381(packed);
+                    if (!message.equals(widget_5.string25)) {
+                        widget_5.string25 = message;
                         staticMethod342(widget_5);
                     }
+
+                    System.out.println(String.format("setInterfaceText(%d, %d, %s)", packed >> 16, packed & 0xFF, message));
 
                     staticInt189 = -1;
                     return true;
