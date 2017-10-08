@@ -6143,16 +6143,21 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // play song
                 if (staticInt189 == 90) {
-                    i_33 = staticPacket3.method477();
-                    if (i_33 == 65535)
+                    int songId = staticPacket3.method477();
+
+                    if (songId == 65535)
                         i_33 = -1;
 
                     i_4 = staticPacket3.method481();
-                    if (staticInt197 != 0 && i_33 != -1) {
-                        StaticClass32.staticMethod164(Renderable.staticJs5IndexImpl15, i_33, 0, staticInt197, false);
+
+                    if (staticInt197 != 0 && songId != -1) {
+                        StaticClass32.staticMethod164(Renderable.staticJs5IndexImpl15, songId, 0, staticInt197, false);
                         staticBool43 = true;
                     }
+
+                    System.out.println(String.format("playSong(%d)", songId));
 
                     staticInt189 = -1;
                     return true;
