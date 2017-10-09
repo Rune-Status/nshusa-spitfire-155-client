@@ -490,6 +490,7 @@ public class StaticClass10 {
         }
     }
 
+    // TODO player update masks
     static final void staticMethod57(Packet packet_0) {
         for (int i_2 = 0; i_2 < staticInt51; i_2++) {
             int i_3 = staticIntArray23[i_2];
@@ -609,7 +610,7 @@ public class StaticClass10 {
             }
 
             if ((i_5 & 0x8) != 0) {
-                i_7 = packet_0.method477();
+                i_7 = packet_0.readUShortA();
                 if (i_7 == 65535)
                     i_7 = -1;
 
