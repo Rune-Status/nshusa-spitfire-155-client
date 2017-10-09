@@ -5742,6 +5742,7 @@ public final class Client extends GameShell {
                 staticInt192 = -staticInt189;
                 int i_33;
                 String string_36;
+
                 if (staticInt189 == 117) {
                     i_33 = staticPacket3.method469();
                     i_4 = staticPacket3.method468();
@@ -6867,6 +6868,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // varp reset
                 if (staticInt189 == 182) {
                     for (i_33 = 0; i_33 < StaticClass18.staticInt121; i_33++) {
                         Varp varp_59 = Varp.staticMethod424(i_33);
