@@ -40,7 +40,7 @@ public class Texture extends Node {
             intArray48 = new int[i_2];
 
             for (i_3 = 0; i_3 < i_2; i_3++)
-                intArray48[i_3] = buffer_1.method444();
+                intArray48[i_3] = buffer_1.readInt();
 
             int356 = buffer_1.method439();
             int357 = buffer_1.method439();

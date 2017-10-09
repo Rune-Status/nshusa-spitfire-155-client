@@ -95,13 +95,13 @@ public class MapElementType extends Cacheable {
                 for (i_5 = 0; i_5 < i_4 * 2; i_5++)
                     unused2[i_5] = buffer_1.method442();
 
-                buffer_1.method444();
+                buffer_1.readInt();
                 i_5 = buffer_1.method439();
                 unused3 = new int[i_5];
 
                 int i_6;
                 for (i_6 = 0; i_6 < unused3.length; i_6++)
-                    unused3[i_6] = buffer_1.method444();
+                    unused3[i_6] = buffer_1.readInt();
 
                 unused4 = new byte[i_4];
 
@@ -115,9 +115,9 @@ public class MapElementType extends Cacheable {
                 else if (i_2 == 19)
                     int548 = buffer_1.method441();
                 else if (i_2 == 21)
-                    buffer_1.method444();
+                    buffer_1.readInt();
                 else if (i_2 == 22)
-                    buffer_1.method444();
+                    buffer_1.readInt();
                 else if (i_2 == 23) {
                     buffer_1.method439();
                     buffer_1.method439();

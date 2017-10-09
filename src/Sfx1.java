@@ -84,16 +84,16 @@ public class Sfx1 extends Node {
 
     void method423(byte[] bytes_1) {
         Buffer buffer_2 = new Buffer(bytes_1);
-        int347 = buffer_2.method444();
-        int351 = buffer_2.method444();
-        int348 = buffer_2.method444();
-        int354 = buffer_2.method444();
+        int347 = buffer_2.readInt();
+        int351 = buffer_2.readInt();
+        int348 = buffer_2.readInt();
+        int354 = buffer_2.readInt();
         if (int354 < 0) {
             int354 = ~int354;
             bool25 = true;
         }
 
-        int i_3 = buffer_2.method444();
+        int i_3 = buffer_2.readInt();
         byteArrayArray1 = new byte[i_3][];
 
         for (int i_4 = 0; i_4 < i_3; i_4++) {

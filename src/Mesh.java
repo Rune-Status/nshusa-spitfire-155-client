@@ -391,7 +391,7 @@ public class Mesh extends Renderable {
             buffer_2.method441();
             buffer_2.method441();
             buffer_2.method441();
-            buffer_2.method444();
+            buffer_2.readInt();
         }
 
     }

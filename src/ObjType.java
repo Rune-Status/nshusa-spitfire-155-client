@@ -137,7 +137,7 @@ public class ObjType extends Cacheable {
         } else if (i_2 == 11)
             stackable = 1;
         else if (i_2 == 12)
-            cost = buffer_1.method444();
+            cost = buffer_1.readInt();
         else if (i_2 == 16)
             members = true;
         else if (i_2 == 23) {

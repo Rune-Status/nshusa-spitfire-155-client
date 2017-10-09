@@ -45,7 +45,7 @@ public class RuneScriptDef extends Cacheable {
         int i_4 = buffer_3.method441();
         int i_5 = buffer_3.buf.length - 2 - i_4 - 12;
         buffer_3.off = i_5;
-        int i_6 = buffer_3.method444();
+        int i_6 = buffer_3.readInt();
         runescriptdef_2.int486 = buffer_3.method441();
         runescriptdef_2.int487 = buffer_3.method441();
         runescriptdef_2.int489 = buffer_3.method441();
@@ -62,8 +62,8 @@ public class RuneScriptDef extends Cacheable {
                 runescriptdef_2.paramListArray1[i_8] = paramlist_10;
 
                 while (i_9-- > 0) {
-                    int i_11 = buffer_3.method444();
-                    int i_12 = buffer_3.method444();
+                    int i_11 = buffer_3.readInt();
+                    int i_12 = buffer_3.readInt();
                     paramlist_10.method248(new IntProperty(i_12), i_11);
                 }
             }
@@ -80,7 +80,7 @@ public class RuneScriptDef extends Cacheable {
             if (i_9 == 3)
                 runescriptdef_2.stringArray5[i_8] = buffer_3.method448();
             else if (i_9 < 100 && i_9 != 21 && i_9 != 38 && i_9 != 39)
-                runescriptdef_2.intArray65[i_8] = buffer_3.method444();
+                runescriptdef_2.intArray65[i_8] = buffer_3.readInt();
             else
                 runescriptdef_2.intArray65[i_8] = buffer_3.method439();
         }

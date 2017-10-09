@@ -21,8 +21,8 @@ public class AudioEnvelope {
 
     final void method144(Buffer buffer_1) {
         int109 = buffer_1.method439();
-        int107 = buffer_1.method444();
-        int105 = buffer_1.method444();
+        int107 = buffer_1.readInt();
+        int105 = buffer_1.readInt();
         method145(buffer_1);
     }
 

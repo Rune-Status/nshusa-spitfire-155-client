@@ -22,8 +22,8 @@ public class Js5IndexImpl extends Js5Index {
         int i_8 = int460;
         if (DataClass9.staticBuffer3 != null) {
             DataClass9.staticBuffer3.off = i_8 * 8 + 5;
-            int i_9 = DataClass9.staticBuffer3.method444();
-            int i_10 = DataClass9.staticBuffer3.method444();
+            int i_9 = DataClass9.staticBuffer3.readInt();
+            int i_10 = DataClass9.staticBuffer3.readInt();
             method507(i_9, i_10);
         } else {
             StaticClass45.staticMethod190((Js5IndexImpl) null, 255, 255, 0, (byte) 0, true);
@@ -193,7 +193,7 @@ public class Js5IndexImpl extends Js5Index {
 
             int i_9 = 0;
             if (i_8 >= 6)
-                i_9 = buffer_7.method444();
+                i_9 = buffer_7.readInt();
 
             if (i_6 != int461 || int463 != i_9) {
                 StaticClass45.staticMethod190(this, 255, int460, int461, (byte) 0, true);

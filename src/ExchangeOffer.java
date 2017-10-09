@@ -13,10 +13,10 @@ public class ExchangeOffer {
     public ExchangeOffer(Buffer buffer_1, boolean bool_2) {
         flags = buffer_1.method440();
         int272 = buffer_1.method441();
-        int268 = buffer_1.method444();
-        int269 = buffer_1.method444();
-        int270 = buffer_1.method444();
-        int271 = buffer_1.method444();
+        int268 = buffer_1.readInt();
+        int269 = buffer_1.readInt();
+        int270 = buffer_1.readInt();
+        int271 = buffer_1.readInt();
         if (bool_2) {
             int i_4 = 0;
             boolean bool_5 = false;
@@ -44,7 +44,7 @@ public class ExchangeOffer {
                     if (bool_5)
                         throw new IllegalStateException("");
 
-                    i_4 = buffer_1.method444();
+                    i_4 = buffer_1.readInt();
                     bool_5 = true;
                 }
             }

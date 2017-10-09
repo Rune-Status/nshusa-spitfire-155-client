@@ -33,8 +33,8 @@ public class ClientPreferences {
                     int i_3 = buffer_1.method439();
 
                     for (int i_4 = 0; i_4 < i_3; i_4++) {
-                        int i_5 = buffer_1.method444();
-                        int i_6 = buffer_1.method444();
+                        int i_5 = buffer_1.readInt();
+                        int i_6 = buffer_1.readInt();
                         linkedHashMap1.put(Integer.valueOf(i_5), Integer.valueOf(i_6));
                     }
                 }

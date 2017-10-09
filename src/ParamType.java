@@ -60,7 +60,7 @@ public class ParamType extends Cacheable {
             char var_4 = (char) i_6;
             type = var_4;
         } else if (i_2 == 2)
-            int594 = buffer_1.method444();
+            int594 = buffer_1.readInt();
         else if (i_2 == 4)
             autodisable = false;
         else if (i_2 == 5)

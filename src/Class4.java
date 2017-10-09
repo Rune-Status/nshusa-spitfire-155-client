@@ -186,7 +186,7 @@ public class Class4 {
             int i_10;
             for (i_8 = 0; i_8 < i_7; i_8++) {
                 i_9 = buffer_24.method441();
-                i_10 = buffer_24.method444();
+                i_10 = buffer_24.readInt();
                 if (boolArray1[i_9])
                     intArray5[i_9] = i_10;
             }

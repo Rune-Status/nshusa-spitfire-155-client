@@ -20,7 +20,7 @@ public class StaticClass46 {
             if (bool_5)
                 obj_7 = new StringProperty(buffer_0.method448());
             else
-                obj_7 = new IntProperty(buffer_0.method444());
+                obj_7 = new IntProperty(buffer_0.readInt());
 
             paramlist_1.method248((Node) obj_7, (long) i_6);
         }

@@ -20,8 +20,8 @@ public class WorldMapAreaDescriptor {
         int59 = i_2;
         filename = buffer_1.method448();
         name = buffer_1.method448();
-        worldMapCoord5 = new WorldMapCoord(buffer_1.method444());
-        int60 = buffer_1.method444();
+        worldMapCoord5 = new WorldMapCoord(buffer_1.readInt());
+        int60 = buffer_1.readInt();
         buffer_1.method439();
         bool3 = buffer_1.method439() == 1;
         int61 = buffer_1.method439();

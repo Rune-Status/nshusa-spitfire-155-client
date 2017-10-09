@@ -29,7 +29,7 @@ public abstract class Js5Index {
         int i_4 = buffer_3.method439();
         if (i_4 >= 5 && i_4 <= 7) {
             if (i_4 >= 6)
-                buffer_3.method444();
+                buffer_3.readInt();
 
             int i_5 = buffer_3.method439();
             if (i_4 >= 7)
@@ -64,16 +64,16 @@ public abstract class Js5Index {
                 groupHashes = new int[i_7 + 1];
 
                 for (i_8 = 0; i_8 < numGroups; i_8++)
-                    groupHashes[groupIds[i_8]] = buffer_3.method444();
+                    groupHashes[groupIds[i_8]] = buffer_3.readInt();
 
                 groupHashTable = new Js5FileHashTable(groupHashes);
             }
 
             for (i_8 = 0; i_8 < numGroups; i_8++)
-                groupCrcs[groupIds[i_8]] = buffer_3.method444();
+                groupCrcs[groupIds[i_8]] = buffer_3.readInt();
 
             for (i_8 = 0; i_8 < numGroups; i_8++)
-                groupVersions[groupIds[i_8]] = buffer_3.method444();
+                groupVersions[groupIds[i_8]] = buffer_3.readInt();
 
             for (i_8 = 0; i_8 < numGroups; i_8++)
                 numFiles[groupIds[i_8]] = buffer_3.method441();
@@ -126,7 +126,7 @@ public abstract class Js5Index {
                     fileHashes[i_9] = new int[files[i_9].length];
 
                     for (i_11 = 0; i_11 < i_10; i_11++)
-                        fileHashes[i_9][fileIds[i_9][i_11]] = buffer_3.method444();
+                        fileHashes[i_9][fileIds[i_9][i_11]] = buffer_3.readInt();
 
                     fileHashTables[i_9] = new Js5FileHashTable(fileHashes[i_9]);
                 }
@@ -322,7 +322,7 @@ public abstract class Js5Index {
                         i_15 = 0;
 
                         for (i_16 = 0; i_16 < i_4; i_16++) {
-                            i_15 += buffer_12.method444();
+                            i_15 += buffer_12.readInt();
                             ints_13[i_16] += i_15;
                         }
                     }
@@ -341,7 +341,7 @@ public abstract class Js5Index {
                         int i_17 = 0;
 
                         for (int i_18 = 0; i_18 < i_4; i_18++) {
-                            i_17 += buffer_12.method444();
+                            i_17 += buffer_12.readInt();
                             System.arraycopy(bytes_21, i_15, bytes_22[i_18], ints_13[i_18], i_17);
                             ints_13[i_18] += i_17;
                             i_15 += i_17;
@@ -423,14 +423,14 @@ public abstract class Js5Index {
     static final byte[] staticMethod200(byte[] bytes_0) {
         Buffer buffer_2 = new Buffer(bytes_0);
         int i_3 = buffer_2.method439();
-        int i_4 = buffer_2.method444();
+        int i_4 = buffer_2.readInt();
         if (i_4 >= 0 && (staticInt147 == 0 || i_4 <= staticInt147)) {
             if (i_3 == 0) {
                 byte[] bytes_7 = new byte[i_4];
                 buffer_2.method451(bytes_7, 0, i_4);
                 return bytes_7;
             } else {
-                int i_5 = buffer_2.method444();
+                int i_5 = buffer_2.readInt();
                 if (i_5 < 0 || staticInt147 != 0 && i_5 > staticInt147)
                     throw new RuntimeException();
                 else {

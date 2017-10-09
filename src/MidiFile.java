@@ -28,8 +28,8 @@ public class MidiFile {
         int i_3;
         int i_5;
         for (i_3 = 0; i_3 < i_2; buffer2.off += i_5) {
-            int i_4 = buffer2.method444();
-            i_5 = buffer2.method444();
+            int i_4 = buffer2.readInt();
+            i_5 = buffer2.readInt();
             if (i_4 == 1297379947) {
                 intArray38[i_3] = buffer2.off;
                 ++i_3;

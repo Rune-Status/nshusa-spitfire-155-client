@@ -29,7 +29,7 @@ public class RuneScriptMap extends Cacheable {
         else if (i_2 == 3)
             string40 = buffer_1.method448();
         else if (i_2 == 4)
-            int558 = buffer_1.method444();
+            int558 = buffer_1.readInt();
         else {
             int i_4;
             if (i_2 == 5) {
@@ -38,7 +38,7 @@ public class RuneScriptMap extends Cacheable {
                 stringArray6 = new String[int557];
 
                 for (i_4 = 0; i_4 < int557; i_4++) {
-                    intArray93[i_4] = buffer_1.method444();
+                    intArray93[i_4] = buffer_1.readInt();
                     stringArray6[i_4] = buffer_1.method448();
                 }
             } else if (i_2 == 6) {
@@ -47,8 +47,8 @@ public class RuneScriptMap extends Cacheable {
                 intArray92 = new int[int557];
 
                 for (i_4 = 0; i_4 < int557; i_4++) {
-                    intArray93[i_4] = buffer_1.method444();
-                    intArray92[i_4] = buffer_1.method444();
+                    intArray93[i_4] = buffer_1.readInt();
+                    intArray92[i_4] = buffer_1.readInt();
                 }
             }
         }
