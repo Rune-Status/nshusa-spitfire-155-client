@@ -5803,7 +5803,7 @@ public final class Client extends GameShell {
                 if (staticInt189 == 127) {
                     i_33 = staticPacket3.method469();
                     i_4 = staticPacket3.method476();
-                    i_35 = staticPacket3.method487();
+                    i_35 = staticPacket3.readIntIM();
 
                     System.out.println(String.format("setInterface(%d, %d, %d, %b)", i_35 >> 16, i_35 & 0xFF, i_4, i_33 == 1));
 
@@ -5980,7 +5980,7 @@ public final class Client extends GameShell {
                     staticMethod343();
                     i_33 = staticPacket3.method439();
                     i_4 = staticPacket3.method439();
-                    i_35 = staticPacket3.method487();
+                    i_35 = staticPacket3.readIntIM();
                     staticIntArray96[i_4] = i_35;
                     staticIntArray84[i_4] = i_33;
                     staticIntArray95[i_4] = 1;
@@ -6002,7 +6002,7 @@ public final class Client extends GameShell {
                     if (i_33 == 65535)
                         i_33 = -1;
 
-                    i_4 = staticPacket3.method487();
+                    i_4 = staticPacket3.readIntIM();
                     i_35 = staticPacket3.method444();
                     i_45 = staticPacket3.readUShortA();
                     if (i_45 == 65535)
@@ -6906,7 +6906,7 @@ public final class Client extends GameShell {
 
                 if (staticInt189 == 55) {
                     bool_48 = staticPacket3.method468() == 1;
-                    i_4 = staticPacket3.method487();
+                    i_4 = staticPacket3.readIntIM();
                     widget_5 = Widget.staticMethod381(i_4);
                     if (widget_5.hidden != bool_48) {
                         widget_5.hidden = bool_48;
@@ -7428,7 +7428,7 @@ public final class Client extends GameShell {
 
                 // TODO find
                 if (staticInt189 == 120) {
-                    i_33 = staticPacket3.method487();
+                    i_33 = staticPacket3.readIntIM();
                     widget_34 = Widget.staticMethod381(i_33);
                     widget_34.int423 = 3;
                     widget_34.int409 = BufferWrapper.staticPlayer1.playerDef1.method304();

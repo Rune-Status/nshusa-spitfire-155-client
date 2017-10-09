@@ -561,7 +561,7 @@ public class Buffer extends Node {
         return (buf[off - 3] & 0xff) + ((buf[off - 4] & 0xff) << 8) + ((buf[off - 1] & 0xff) << 16) + ((buf[off - 2] & 0xff) << 24);
     }
 
-    public int method487() {
+    public int readIntIM() {
         off += 4;
         return (buf[off - 2] & 0xff) + ((buf[off - 3] & 0xff) << 24) + ((buf[off - 4] & 0xff) << 16) + ((buf[off - 1] & 0xff) << 8);
     }
