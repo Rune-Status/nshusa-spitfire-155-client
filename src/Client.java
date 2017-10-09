@@ -5718,6 +5718,7 @@ public final class Client extends GameShell {
                 }
 
                 if (staticInt287 == -2) {
+
                     if (i_2 <= 1)
                         return false;
 
@@ -5833,12 +5834,14 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // TODO find
                 if (staticInt189 == 28) {
                     staticMethod259();
                     staticInt189 = -1;
                     return false;
                 }
 
+                // TODO find
                 if (staticInt189 == 254) {
                     i_33 = staticPacket3.method486();
                     i_4 = staticPacket3.method479();
@@ -5854,6 +5857,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // static region
                 if (staticInt189 == 150) {
                     staticMethod295(false);
                     staticPacket3.readOpcode();
@@ -5863,6 +5867,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // TODO find
                 if (staticInt189 == 88) {
                     staticInt179 = staticPacket3.method439();
                     if (staticInt179 == 255)
@@ -5893,6 +5898,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // dynamic region
                 if (staticInt189 == 148) {
                     staticMethod295(true);
                     staticPacket3.readOpcode();
@@ -5905,6 +5911,8 @@ public final class Client extends GameShell {
                 String string_37;
                 int i_42;
                 boolean bool_49;
+
+                // something to do with ignores, rename ignores??
                 if (staticInt189 == 86) {
                     while (staticPacket3.off < staticInt287) {
                         i_33 = staticPacket3.method439();
@@ -6345,6 +6353,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // camera packet?
                 if (staticInt189 == 11) {
                     staticBool45 = true;
                     SoundBank.staticInt74 = staticPacket3.method439();
@@ -7127,6 +7136,8 @@ public final class Client extends GameShell {
                 }
 
                 String string_41;
+
+                // server message
                 if (staticInt189 == 100) {
                     i_33 = staticPacket3.method453();
                     bool_49 = staticPacket3.method439() == 1;
@@ -7206,6 +7217,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // camera packet
                 if (staticInt189 == 180) {
                     staticBool45 = true;
                     JavaxSoundSystemProvider.staticInt10 = staticPacket3.method439();
@@ -7273,6 +7285,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // dns lookup
                 if (staticInt189 == 193) {
                     i_33 = staticPacket3.readIntLE();
                     WM1.staticTask1 = staticTaskManager1.submitDNS(i_33);
@@ -7280,6 +7293,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // get params
                 if (staticInt189 == 128) {
                     string_3 = staticPacket3.method448();
                     WorldMap.staticString25 = string_3;
@@ -7314,6 +7328,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // TODO find packet
                 if (staticInt189 == 146) {
                     string_3 = staticPacket3.method448();
                     string_38 = TypeFace.staticMethod495(StaticClass51.staticMethod215(StaticClass50.staticMethod207(staticPacket3)));
@@ -7322,6 +7337,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // TODO find packet
                 if (staticInt189 == 64) {
                     i_33 = staticPacket3.method441();
                     i_4 = staticPacket3.method476();
@@ -7332,6 +7348,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // TODO find
                 if (staticInt189 == 20) {
                     i_33 = staticPacket3.readIntLE();
                     i_4 = staticPacket3.method476();
@@ -7382,6 +7399,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // system update
                 if (staticInt189 == 174) {
                     staticInt201 = staticPacket3.method441() * 30;
                     staticInt264 = staticInt256;
@@ -7389,6 +7407,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // TODO find
                 if (staticInt189 == 244) {
                     i_33 = staticPacket3.method476();
                     i_4 = staticPacket3.readIntLE();
@@ -7403,6 +7422,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // TODO find
                 if (staticInt189 == 120) {
                     i_33 = staticPacket3.method487();
                     widget_34 = Widget.staticMethod381(i_33);
