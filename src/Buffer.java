@@ -508,7 +508,7 @@ public class Buffer extends Node {
         return ((buf[off - 2] & 0xff) << 8) + (buf[off - 1] - 128 & 0xff);
     }
 
-    public int method478() {
+    public int readUShortLEA() {
         off += 2;
         return ((buf[off - 1] & 0xff) << 8) + (buf[off - 2] - 128 & 0xff);
     }

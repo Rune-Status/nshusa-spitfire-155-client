@@ -5336,7 +5336,7 @@ public final class Client extends GameShell {
         int i_7;
         int i_8;
         if (!staticBool30) {
-            i_2 = staticPacket3.method478();
+            i_2 = staticPacket3.readUShortLEA();
             int i_3 = staticPacket3.readUShortA();
             i_4 = staticPacket3.method441();
             StaticClass2.staticIntArrayArray1 = new int[i_4][4];
@@ -5372,7 +5372,7 @@ public final class Client extends GameShell {
 
             staticMethod296(i_2, i_3, true);
         } else {
-            i_2 = staticPacket3.method478();
+            i_2 = staticPacket3.readUShortLEA();
             boolean bool_15 = staticPacket3.method468() == 1;
             i_4 = staticPacket3.method441();
             i_5 = staticPacket3.method441();
@@ -6187,7 +6187,7 @@ public final class Client extends GameShell {
                 // varp small
                 if (staticInt189 == 185) {
                     byte state = staticPacket3.method472();
-                    int id = staticPacket3.method478();
+                    int id = staticPacket3.readUShortLEA();
                     StaticClass44.staticIntArray66[id] = state;
                     if (StaticClass44.staticIntArray68[id] != state) {
                         StaticClass44.staticIntArray68[id] = state;
@@ -7223,6 +7223,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // player updating
                 if (staticInt189 == 83) {
                     StaticClass10.staticMethod53(staticPacket3, staticInt287);
                     staticInt189 = -1;
@@ -7587,7 +7588,7 @@ public final class Client extends GameShell {
                     } else {
                         if (staticInt189 == 163) {
                             byte b_1 = staticPacket3.method471();
-                            i_2 = staticPacket3.method478();
+                            i_2 = staticPacket3.readUShortLEA();
                             byte b_3 = staticPacket3.method471();
                             byte b_4 = staticPacket3.method471();
                             i_5 = staticPacket3.readUShortA();
@@ -7661,7 +7662,7 @@ public final class Client extends GameShell {
                             i_30 = staticPacket3.method468();
                             i_2 = (i_30 >> 4 & 0x7) + WorldMapTile.staticInt5;
                             i_31 = Actor.staticInt318 + (i_30 & 0x7);
-                            i_32 = staticPacket3.method478();
+                            i_32 = staticPacket3.readUShortLEA();
                             i_5 = staticPacket3.method469();
                             i_33 = i_5 >> 2;
                             i_7 = i_5 & 0x3;
@@ -8011,7 +8012,7 @@ public final class Client extends GameShell {
             }
 
             if ((i_5 & 0x1) != 0) {
-                npc_4.npcType1 = NpcType.staticMethod413(staticPacket3.method478());
+                npc_4.npcType1 = NpcType.staticMethod413(staticPacket3.readUShortLEA());
                 npc_4.tiles = npc_4.npcType1.name;
                 npc_4.ubn = npc_4.npcType1.int544;
                 npc_4.walk = npc_4.npcType1.idle;
@@ -8055,7 +8056,7 @@ public final class Client extends GameShell {
             int i_9;
             if ((i_5 & 0x20) != 0) {
                 i_6 = staticPacket3.readUShortLE();
-                i_7 = staticPacket3.method478();
+                i_7 = staticPacket3.readUShortLEA();
                 i_8 = npc_4.int626 - (i_6 - DataClass10.staticInt111 - DataClass10.staticInt111) * 64;
                 i_9 = npc_4.int609 - (i_7 - Class4.staticInt53 - Class4.staticInt53) * 64;
                 if (i_8 != 0 || i_9 != 0)
@@ -8063,7 +8064,7 @@ public final class Client extends GameShell {
             }
 
             if ((i_5 & 0x10) != 0) {
-                npc_4.int620 = staticPacket3.method478();
+                npc_4.int620 = staticPacket3.readUShortLEA();
                 if (npc_4.int620 == 65535)
                     npc_4.int620 = -1;
             }

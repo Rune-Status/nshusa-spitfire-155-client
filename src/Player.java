@@ -41,6 +41,7 @@ public final class Player extends Actor {
         bool76 = false;
     }
 
+    // player appearance
     final void method695(Buffer buffer_1) {
         buffer_1.off = 0;
         int i_3 = buffer_1.readUByte();
