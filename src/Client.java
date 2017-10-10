@@ -6060,7 +6060,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
-                // player updating
+                // npc updating
                 if (staticInt189 == 108) {
                     staticMethod305(true);
                     staticInt189 = -1;
