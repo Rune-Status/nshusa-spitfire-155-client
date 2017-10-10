@@ -35,7 +35,7 @@ public class World {
                     world_4.string8 = buffer_2.method448();
                     world_4.string9 = buffer_2.method448();
                     world_4.int97 = buffer_2.method439();
-                    world_4.int96 = buffer_2.method442();
+                    world_4.int96 = buffer_2.readShort();
                 }
 
                 staticMethod47(DataClass8.staticWorldArray1, 0, DataClass8.staticWorldArray1.length - 1, staticIntArray15, staticIntArray16);

@@ -202,7 +202,7 @@ public class Buffer extends Node {
         return ((buf[off - 2] & 0xff) << 8) + (buf[off - 1] & 0xff);
     }
 
-    public int method442() {
+    public int readShort() {
         off += 2;
         int i_2 = (buf[off - 1] & 0xff) + ((buf[off - 2] & 0xff) << 8);
         if (i_2 > 32767)

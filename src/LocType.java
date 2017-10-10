@@ -204,11 +204,11 @@ public class LocType extends Cacheable {
         else if (i_2 == 69)
             buffer_1.method439();
         else if (i_2 == 70)
-            off = buffer_1.method442();
+            off = buffer_1.readShort();
         else if (i_2 == 71)
-            int529 = buffer_1.method442();
+            int529 = buffer_1.readShort();
         else if (i_2 == 72)
-            int530 = buffer_1.method442();
+            int530 = buffer_1.readShort();
         else if (i_2 == 73)
             bool59 = true;
         else if (i_2 == 74)

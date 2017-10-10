@@ -288,8 +288,8 @@ public class Widget extends Node {
         type = buffer_1.method439();
         int395 = buffer_1.method439();
         int396 = buffer_1.method441();
-        int401 = buffer_1.method442();
-        int402 = buffer_1.method442();
+        int401 = buffer_1.readShort();
+        int402 = buffer_1.readShort();
         int403 = buffer_1.method441();
         int404 = buffer_1.method441();
         int416 = buffer_1.method439();
@@ -373,8 +373,8 @@ public class Widget extends Node {
             for (i_9 = 0; i_9 < 20; i_9++) {
                 int i_10 = buffer_1.method439();
                 if (i_10 == 1) {
-                    intArray52[i_9] = buffer_1.method442();
-                    intArray53[i_9] = buffer_1.method442();
+                    intArray52[i_9] = buffer_1.readShort();
+                    intArray53[i_9] = buffer_1.readShort();
                     intArray54[i_9] = buffer_1.readInt();
                 } else
                     intArray54[i_9] = -1;
@@ -458,8 +458,8 @@ public class Widget extends Node {
 
             bool43 = buffer_1.method439() == 1;
             int393 = buffer_1.readInt();
-            int422 = buffer_1.method442();
-            int441 = buffer_1.method442();
+            int422 = buffer_1.readShort();
+            int441 = buffer_1.readShort();
             i_5 = buffer_1.method439();
             if (i_5 == 1)
                 int418 |= 0x40000000;
@@ -515,11 +515,11 @@ public class Widget extends Node {
         bool34 = true;
         type = buffer_1.method439();
         int396 = buffer_1.method441();
-        int401 = buffer_1.method442();
-        int402 = buffer_1.method442();
+        int401 = buffer_1.readShort();
+        int402 = buffer_1.readShort();
         int403 = buffer_1.method441();
         if (type == 9)
-            int404 = buffer_1.method442();
+            int404 = buffer_1.readShort();
         else
             int404 = buffer_1.method441();
 
@@ -557,8 +557,8 @@ public class Widget extends Node {
             if (int409 == 65535)
                 int409 = -1;
 
-            int427 = buffer_1.method442();
-            int428 = buffer_1.method442();
+            int427 = buffer_1.readShort();
+            int428 = buffer_1.readShort();
             int429 = buffer_1.method441();
             int430 = buffer_1.method441();
             int442 = buffer_1.method441();

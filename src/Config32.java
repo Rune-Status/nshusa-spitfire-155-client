@@ -62,19 +62,19 @@ public class Config32 extends Cacheable {
         else if (i_2 == 6)
             int564 = buffer_1.method455();
         else if (i_2 == 7)
-            int572 = buffer_1.method442();
+            int572 = buffer_1.readShort();
         else if (i_2 == 8)
             string41 = buffer_1.method449();
         else if (i_2 == 9)
             int560 = buffer_1.method441();
         else if (i_2 == 10)
-            int566 = buffer_1.method442();
+            int566 = buffer_1.readShort();
         else if (i_2 == 11)
             int567 = 0;
         else if (i_2 == 12)
             int571 = buffer_1.method439();
         else if (i_2 == 13)
-            int569 = buffer_1.method442();
+            int569 = buffer_1.readShort();
         else if (i_2 == 14)
             int567 = buffer_1.method441();
         else if (i_2 == 17 || i_2 == 18) {

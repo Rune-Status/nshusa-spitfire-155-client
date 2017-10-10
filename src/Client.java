@@ -5743,6 +5743,7 @@ public final class Client extends GameShell {
                 int i_33;
                 String string_36;
 
+                // TODO identify packet
                 if (staticInt189 == 117) {
                     i_33 = staticPacket3.method469();
                     i_4 = staticPacket3.method468();
@@ -5801,6 +5802,8 @@ public final class Client extends GameShell {
                 int i_35;
                 int i_52;
                 NodeSub1 nodesub1_75;
+
+                // set interface
                 if (staticInt189 == 127) {
                     i_33 = staticPacket3.method469();
                     i_4 = staticPacket3.method476();
@@ -5837,7 +5840,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
-                // TODO find
+                // force logout
                 if (staticInt189 == 28) {
                     staticMethod259();
                     staticInt189 = -1;
@@ -5855,7 +5858,6 @@ public final class Client extends GameShell {
                         widget_5.int455 = 0;
                         staticMethod342(widget_5);
                     }
-
                     staticInt189 = -1;
                     return true;
                 }
@@ -5959,7 +5961,7 @@ public final class Client extends GameShell {
                 if (staticInt189 == 188) {
                     i_33 = staticPacket3.method479();
                     i_4 = staticPacket3.method486();
-                    i_35 = staticPacket3.method442();
+                    i_35 = staticPacket3.readShort();
                     widget_6 = Widget.staticMethod381(i_4);
                     if (i_35 != widget_6.int401 || widget_6.int402 != i_33 || widget_6.int390 != 0 || widget_6.int398 != 0) {
                         widget_6.int401 = i_35;
@@ -6058,6 +6060,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // player updating
                 if (staticInt189 == 108) {
                     staticMethod305(true);
                     staticInt189 = -1;
@@ -6078,9 +6081,10 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // weight
                 if (staticInt189 == 249) {
                     staticMethod343();
-                    staticInt245 = staticPacket3.method442();
+                    staticInt245 = staticPacket3.readShort();
                     staticInt264 = staticInt256;
                     staticInt189 = -1;
                     return true;
@@ -6462,6 +6466,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // CS2 script
                 if (staticInt189 == 144) {
                     string_3 = staticPacket3.method448();
                     Object[] arr_105 = new Object[string_3.length() + 1];
@@ -7560,7 +7565,7 @@ public final class Client extends GameShell {
                         i_31 = Actor.staticInt318 + (i_30 & 0x7);
                         i_32 = i_2 + staticPacket3.method440();
                         i_5 = i_31 + staticPacket3.method440();
-                        i_33 = staticPacket3.method442();
+                        i_33 = staticPacket3.readShort();
                         i_7 = staticPacket3.method441();
                         i_8 = staticPacket3.method439() * 4;
                         i_9 = staticPacket3.method439() * 4;
