@@ -66,7 +66,7 @@ public class NpcType extends Cacheable {
 
     void decode(Buffer buffer_1) {
         while (true) {
-            int i_3 = buffer_1.method439();
+            int i_3 = buffer_1.readUByte();
             if (i_3 == 0)
                 return;
 
@@ -78,7 +78,7 @@ public class NpcType extends Cacheable {
         int i_4;
         int i_5;
         if (i_2 == 1) {
-            i_4 = buffer_1.method439();
+            i_4 = buffer_1.readUByte();
             intArray88 = new int[i_4];
 
             for (i_5 = 0; i_5 < i_4; i_5++)
@@ -86,7 +86,7 @@ public class NpcType extends Cacheable {
         } else if (i_2 == 2)
             string39 = buffer_1.method448();
         else if (i_2 == 12)
-            name = buffer_1.method439();
+            name = buffer_1.readUByte();
         else if (i_2 == 13)
             tiles = -buffer_1.method441();
         else if (i_2 == 14)
@@ -105,7 +105,7 @@ public class NpcType extends Cacheable {
             if (op[i_2 - 30].equalsIgnoreCase("Hidden"))
                 op[i_2 - 30] = null;
         } else if (i_2 == 40) {
-            i_4 = buffer_1.method439();
+            i_4 = buffer_1.readUByte();
             shortArray6 = new short[i_4];
             shortArray7 = new short[i_4];
 
@@ -114,7 +114,7 @@ public class NpcType extends Cacheable {
                 shortArray7[i_5] = (short) buffer_1.method441();
             }
         } else if (i_2 == 41) {
-            i_4 = buffer_1.method439();
+            i_4 = buffer_1.readUByte();
             shortArray8 = new short[i_4];
             shortArray9 = new short[i_4];
 
@@ -123,7 +123,7 @@ public class NpcType extends Cacheable {
                 shortArray9[i_5] = (short) buffer_1.method441();
             }
         } else if (i_2 == 60) {
-            i_4 = buffer_1.method439();
+            i_4 = buffer_1.readUByte();
             intArray89 = new int[i_4];
 
             for (i_5 = 0; i_5 < i_4; i_5++)
@@ -171,7 +171,7 @@ public class NpcType extends Cacheable {
                     i_4 = -1;
             }
 
-            i_5 = buffer_1.method439();
+            i_5 = buffer_1.readUByte();
             intArray90 = new int[i_5 + 2];
 
             for (int i_6 = 0; i_6 <= i_5; i_6++) {

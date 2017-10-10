@@ -13,7 +13,7 @@ public class RuneScriptMap extends Cacheable {
 
     public void decode(Buffer buffer_1) {
         while (true) {
-            int i_3 = buffer_1.method439();
+            int i_3 = buffer_1.readUByte();
             if (i_3 == 0)
                 return;
 
@@ -23,9 +23,9 @@ public class RuneScriptMap extends Cacheable {
 
     void decode(Buffer buffer_1, int i_2) {
         if (i_2 == 1)
-            char3 = (char) buffer_1.method439();
+            char3 = (char) buffer_1.readUByte();
         else if (i_2 == 2)
-            char2 = (char) buffer_1.method439();
+            char2 = (char) buffer_1.readUByte();
         else if (i_2 == 3)
             string40 = buffer_1.method448();
         else if (i_2 == 4)

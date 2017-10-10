@@ -15,7 +15,7 @@ public class SoundEffect {
 
     SoundEffect(Buffer buffer_1) {
         for (int i_2 = 0; i_2 < 10; i_2++) {
-            int i_3 = buffer_1.method439();
+            int i_3 = buffer_1.readUByte();
             if (i_3 != 0) {
                 --buffer_1.off;
                 audioInstrumentArray1[i_2] = new AudioInstrument();

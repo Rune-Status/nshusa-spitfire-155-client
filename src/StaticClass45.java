@@ -106,9 +106,9 @@ public class StaticClass45 {
 
                             if (staticJs5DownloadRequest1 == null) {
                                 staticBuffer4.off = 0;
-                                i_8 = staticBuffer4.method439();
+                                i_8 = staticBuffer4.readUByte();
                                 i_9 = staticBuffer4.method441();
-                                int i_10 = staticBuffer4.method439();
+                                int i_10 = staticBuffer4.readUByte();
                                 i_11 = staticBuffer4.readInt();
                                 long long_12 = (i_8 << 16) + i_9;
                                 Js5DownloadRequest js5downloadrequest_14 = (Js5DownloadRequest) staticHashTable2.get(long_12);

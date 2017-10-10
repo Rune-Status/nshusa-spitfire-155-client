@@ -26,12 +26,12 @@ public abstract class Js5Index {
     void init(byte[] bytes_1) {
         crc = Buffer.staticMethod377(bytes_1, bytes_1.length);
         Buffer buffer_3 = new Buffer(staticMethod200(bytes_1));
-        int i_4 = buffer_3.method439();
+        int i_4 = buffer_3.readUByte();
         if (i_4 >= 5 && i_4 <= 7) {
             if (i_4 >= 6)
                 buffer_3.readInt();
 
-            int i_5 = buffer_3.method439();
+            int i_5 = buffer_3.readUByte();
             if (i_4 >= 7)
                 numGroups = buffer_3.method454();
             else
@@ -422,7 +422,7 @@ public abstract class Js5Index {
 
     static final byte[] staticMethod200(byte[] bytes_0) {
         Buffer buffer_2 = new Buffer(bytes_0);
-        int i_3 = buffer_2.method439();
+        int i_3 = buffer_2.readUByte();
         int i_4 = buffer_2.readInt();
         if (i_4 >= 0 && (staticInt147 == 0 || i_4 <= staticInt147)) {
             if (i_3 == 0) {

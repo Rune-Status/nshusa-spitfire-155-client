@@ -175,7 +175,7 @@ public class Class4 {
             if (buffer_24.buf.length - buffer_24.off < 1)
                 return;
 
-            int i_6 = buffer_24.method439();
+            int i_6 = buffer_24.readUByte();
             if (i_6 < 0 || i_6 > 1)
                 return;
 

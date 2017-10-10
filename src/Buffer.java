@@ -189,7 +189,7 @@ public class Buffer extends Node {
         writeByte(i_1 & 0x7f);
     }
 
-    public int method439() {
+    public int readUByte() {
         return buf[off++] & 0xff;
     }
 
@@ -228,7 +228,7 @@ public class Buffer extends Node {
     }
 
     public boolean method446() {
-        return (method439() & 0x1) == 1;
+        return (readUByte() & 0x1) == 1;
     }
 
     public String method447() {
@@ -288,12 +288,12 @@ public class Buffer extends Node {
 
     public int method452() {
         int i_2 = buf[off] & 0xff;
-        return i_2 < 128 ? method439() - 64 : method441() - 49152;
+        return i_2 < 128 ? readUByte() - 64 : method441() - 49152;
     }
 
     public int method453() {
         int i_2 = buf[off] & 0xff;
-        return i_2 < 128 ? method439() : method441() - 32768;
+        return i_2 < 128 ? readUByte() : method441() - 32768;
     }
 
     public int method454() {

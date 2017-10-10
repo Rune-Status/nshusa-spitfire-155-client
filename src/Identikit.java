@@ -30,7 +30,7 @@ public class Identikit extends Cacheable {
 
     void decode(Buffer buffer_1) {
         while (true) {
-            int i_3 = buffer_1.method439();
+            int i_3 = buffer_1.readUByte();
             if (i_3 == 0)
                 return;
 
@@ -40,12 +40,12 @@ public class Identikit extends Cacheable {
 
     void decode(Buffer buffer_1, int i_2) {
         if (i_2 == 1)
-            int549 = buffer_1.method439();
+            int549 = buffer_1.readUByte();
         else {
             int i_4;
             int i_5;
             if (i_2 == 2) {
-                i_4 = buffer_1.method439();
+                i_4 = buffer_1.readUByte();
                 models = new int[i_4];
 
                 for (i_5 = 0; i_5 < i_4; i_5++)
@@ -53,7 +53,7 @@ public class Identikit extends Cacheable {
             } else if (i_2 == 3)
                 bool65 = true;
             else if (i_2 == 40) {
-                i_4 = buffer_1.method439();
+                i_4 = buffer_1.readUByte();
                 shortArray10 = new short[i_4];
                 shortArray11 = new short[i_4];
 
@@ -62,7 +62,7 @@ public class Identikit extends Cacheable {
                     shortArray11[i_5] = (short) buffer_1.method441();
                 }
             } else if (i_2 == 41) {
-                i_4 = buffer_1.method439();
+                i_4 = buffer_1.readUByte();
                 shortArray12 = new short[i_4];
                 shortArray13 = new short[i_4];
 

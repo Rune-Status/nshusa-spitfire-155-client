@@ -22,7 +22,7 @@ public class ExchangeOffer {
             boolean bool_5 = false;
 
             while (true) {
-                int i_6 = buffer_1.method439();
+                int i_6 = buffer_1.readUByte();
                 if (i_6 == 255) {
                     Integer integer_3 = bool_5 ? Integer.valueOf(i_4) : null;
                     method310(integer_3);
@@ -33,7 +33,7 @@ public class ExchangeOffer {
                     throw new IllegalStateException("");
 
                 while (true) {
-                    int i_7 = buffer_1.method439();
+                    int i_7 = buffer_1.readUByte();
                     if (i_7 == 255)
                         break;
 

@@ -187,7 +187,7 @@ public class Js5IndexImpl extends Js5Index {
             staticCRC32_2.update(bytes_3, 0, bytes_3.length);
             i_6 = (int) staticCRC32_2.getValue();
             Buffer buffer_7 = new Buffer(Js5Index.staticMethod200(bytes_3));
-            int i_8 = buffer_7.method439();
+            int i_8 = buffer_7.readUByte();
             if (i_8 != 5 && i_8 != 6)
                 throw new RuntimeException(i_8 + "," + int460 + "," + i_2);
 

@@ -135,7 +135,7 @@ public final class StaticClass3 {
             staticByteArrayArrayArray1[i_1][i_2][i_3] = 0;
 
             while (true) {
-                i_8 = buffer_0.method439();
+                i_8 = buffer_0.readUByte();
                 if (i_8 == 0) {
                     if (i_1 == 0)
                         staticIntArrayArrayArray1[0][i_2][i_3] = -staticMethod22(i_2 + 932731 + i_4, i_3 + 556238 + i_5) * 8;
@@ -145,7 +145,7 @@ public final class StaticClass3 {
                 }
 
                 if (i_8 == 1) {
-                    int i_9 = buffer_0.method439();
+                    int i_9 = buffer_0.readUByte();
                     if (i_9 == 1)
                         i_9 = 0;
 
@@ -167,17 +167,17 @@ public final class StaticClass3 {
             }
         } else
             while (true) {
-                i_8 = buffer_0.method439();
+                i_8 = buffer_0.readUByte();
                 if (i_8 == 0)
                     break;
 
                 if (i_8 == 1) {
-                    buffer_0.method439();
+                    buffer_0.readUByte();
                     break;
                 }
 
                 if (i_8 <= 49)
-                    buffer_0.method439();
+                    buffer_0.readUByte();
             }
 
     }
@@ -206,7 +206,7 @@ public final class StaticClass3 {
                     i_8 += i_10 - 1;
                     int i_11 = i_8 & 0x3f;
                     int i_12 = i_8 >> 6 & 0x3f;
-                    int i_13 = buffer_5.method439() >> 2;
+                    int i_13 = buffer_5.readUByte() >> 2;
                     int i_14 = i_1 + i_12;
                     int i_15 = i_11 + i_2;
                     if (i_14 > 0 && i_15 > 0 && i_14 < 103 && i_15 < 103) {
@@ -226,7 +226,7 @@ public final class StaticClass3 {
                 if (i_10 == 0)
                     break;
 
-                buffer_5.method439();
+                buffer_5.readUByte();
             }
         }
     }
@@ -252,7 +252,7 @@ public final class StaticClass3 {
                 int i_11 = i_9 & 0x3f;
                 int i_12 = i_9 >> 6 & 0x3f;
                 int i_13 = i_9 >> 12;
-                int i_14 = buffer_6.method439();
+                int i_14 = buffer_6.readUByte();
                 int i_15 = i_14 >> 2;
                 int i_16 = i_14 & 0x3;
                 int i_17 = i_12 + i_1;

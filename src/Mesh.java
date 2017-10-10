@@ -80,13 +80,13 @@ public class Mesh extends Renderable {
         buffer_2.off = bytes_1.length - 23;
         int i_9 = buffer_2.method441();
         int i_10 = buffer_2.method441();
-        int i_11 = buffer_2.method439();
-        int i_12 = buffer_2.method439();
-        int i_13 = buffer_2.method439();
-        int i_14 = buffer_2.method439();
-        int i_15 = buffer_2.method439();
-        int i_16 = buffer_2.method439();
-        int i_17 = buffer_2.method439();
+        int i_11 = buffer_2.readUByte();
+        int i_12 = buffer_2.readUByte();
+        int i_13 = buffer_2.readUByte();
+        int i_14 = buffer_2.readUByte();
+        int i_15 = buffer_2.readUByte();
+        int i_16 = buffer_2.readUByte();
+        int i_17 = buffer_2.readUByte();
         int i_18 = buffer_2.method441();
         int i_19 = buffer_2.method441();
         int i_20 = buffer_2.method441();
@@ -229,7 +229,7 @@ public class Mesh extends Renderable {
         int i_54;
         int i_55;
         for (i_51 = 0; i_51 < i_9; i_51++) {
-            i_52 = buffer_2.method439();
+            i_52 = buffer_2.readUByte();
             i_53 = 0;
             if ((i_52 & 0x1) != 0)
                 i_53 = buffer_3.method452();
@@ -249,7 +249,7 @@ public class Mesh extends Renderable {
             i_49 = intArray106[i_51];
             i_50 = intArray112[i_51];
             if (i_17 == 1)
-                intArray111[i_51] = buffer_6.method439();
+                intArray111[i_51] = buffer_6.readUByte();
         }
 
         buffer_2.off = i_37;
@@ -272,13 +272,13 @@ public class Mesh extends Renderable {
                 byteArray18[i_51] = buffer_5.method440();
 
             if (i_15 == 1)
-                intArray110[i_51] = buffer_6.method439();
+                intArray110[i_51] = buffer_6.readUByte();
 
             if (i_16 == 1)
                 shortArray20[i_51] = (short) (buffer_7.method441() - 1);
 
             if (byteArray14 != null && shortArray20[i_51] != -1)
-                byteArray14[i_51] = (byte) (buffer_8.method439() - 1);
+                byteArray14[i_51] = (byte) (buffer_8.readUByte() - 1);
         }
 
         buffer_2.off = i_34;
@@ -290,7 +290,7 @@ public class Mesh extends Renderable {
 
         int i_56;
         for (i_55 = 0; i_55 < i_10; i_55++) {
-            i_56 = buffer_3.method439();
+            i_56 = buffer_3.readUByte();
             if (i_56 == 1) {
                 i_51 = buffer_2.method452() + i_54;
                 i_52 = buffer_2.method452() + i_51;
@@ -385,7 +385,7 @@ public class Mesh extends Renderable {
         }
 
         buffer_2.off = i_26;
-        i_55 = buffer_2.method439();
+        i_55 = buffer_2.readUByte();
         if (i_55 != 0) {
             new DataClass8();
             buffer_2.method441();
@@ -407,12 +407,12 @@ public class Mesh extends Renderable {
         buffer_4.off = bytes_1.length - 18;
         int i_9 = buffer_4.method441();
         int i_10 = buffer_4.method441();
-        int i_11 = buffer_4.method439();
-        int i_12 = buffer_4.method439();
-        int i_13 = buffer_4.method439();
-        int i_14 = buffer_4.method439();
-        int i_15 = buffer_4.method439();
-        int i_16 = buffer_4.method439();
+        int i_11 = buffer_4.readUByte();
+        int i_12 = buffer_4.readUByte();
+        int i_13 = buffer_4.readUByte();
+        int i_14 = buffer_4.readUByte();
+        int i_15 = buffer_4.readUByte();
+        int i_16 = buffer_4.readUByte();
         int i_17 = buffer_4.method441();
         int i_18 = buffer_4.method441();
         int i_19 = buffer_4.method441();
@@ -504,7 +504,7 @@ public class Mesh extends Renderable {
         int i_41;
         int i_42;
         for (i_38 = 0; i_38 < i_9; i_38++) {
-            i_39 = buffer_4.method439();
+            i_39 = buffer_4.readUByte();
             i_40 = 0;
             if ((i_39 & 0x1) != 0)
                 i_40 = buffer_5.method452();
@@ -524,7 +524,7 @@ public class Mesh extends Renderable {
             i_36 = intArray106[i_38];
             i_37 = intArray112[i_38];
             if (i_16 == 1)
-                intArray111[i_38] = buffer_8.method439();
+                intArray111[i_38] = buffer_8.readUByte();
         }
 
         buffer_4.off = i_30;
@@ -536,7 +536,7 @@ public class Mesh extends Renderable {
         for (i_38 = 0; i_38 < i_10; i_38++) {
             shortArray19[i_38] = (short) buffer_4.method441();
             if (i_12 == 1) {
-                i_39 = buffer_5.method439();
+                i_39 = buffer_5.readUByte();
                 if ((i_39 & 0x1) == 1) {
                     byteArray17[i_38] = 1;
                     bool_2 = true;
@@ -562,7 +562,7 @@ public class Mesh extends Renderable {
                 byteArray18[i_38] = buffer_7.method440();
 
             if (i_15 == 1)
-                intArray110[i_38] = buffer_8.method439();
+                intArray110[i_38] = buffer_8.readUByte();
         }
 
         buffer_4.off = i_29;
@@ -575,7 +575,7 @@ public class Mesh extends Renderable {
         int i_43;
         int i_44;
         for (i_42 = 0; i_42 < i_10; i_42++) {
-            i_43 = buffer_5.method439();
+            i_43 = buffer_5.readUByte();
             if (i_43 == 1) {
                 i_38 = buffer_4.method452() + i_41;
                 i_39 = buffer_4.method452() + i_38;

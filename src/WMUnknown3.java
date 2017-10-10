@@ -67,20 +67,20 @@ public class WMUnknown3 implements WMUnknown {
 
     @Override
     public void method6(Buffer buffer_1) {
-        int25 = buffer_1.method439();
-        int16 = buffer_1.method439();
+        int25 = buffer_1.readUByte();
+        int16 = buffer_1.readUByte();
         int27 = buffer_1.method441();
-        int29 = buffer_1.method439();
-        int21 = buffer_1.method439();
+        int29 = buffer_1.readUByte();
+        int21 = buffer_1.readUByte();
         int18 = buffer_1.method441();
-        int17 = buffer_1.method439();
-        int22 = buffer_1.method439();
+        int17 = buffer_1.readUByte();
+        int22 = buffer_1.readUByte();
         int20 = buffer_1.method441();
-        int23 = buffer_1.method439();
-        int28 = buffer_1.method439();
+        int23 = buffer_1.readUByte();
+        int28 = buffer_1.readUByte();
         int19 = buffer_1.method441();
-        int24 = buffer_1.method439();
-        int26 = buffer_1.method439();
+        int24 = buffer_1.readUByte();
+        int26 = buffer_1.readUByte();
         method8();
     }
 

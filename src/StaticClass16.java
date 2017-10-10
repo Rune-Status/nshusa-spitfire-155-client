@@ -34,13 +34,13 @@ public class StaticClass16 {
                 }
 
                 buffer_9.off = 0;
-                i_10 = buffer_9.method439();
+                i_10 = buffer_9.readUByte();
                 if (i_10 < 1 || i_10 > 3)
                     throw new IOException("" + i_10);
 
                 int i_11 = 0;
                 if (i_10 > 1)
-                    i_11 = buffer_9.method439();
+                    i_11 = buffer_9.readUByte();
 
                 if (i_10 <= 2) {
                     string_5 = buffer_9.method449();

@@ -107,7 +107,7 @@ public class ObjType extends Cacheable {
 
     void decode(Buffer buffer_1) {
         while (true) {
-            int i_3 = buffer_1.method439();
+            int i_3 = buffer_1.readUByte();
             if (i_3 == 0)
                 return;
 
@@ -142,12 +142,12 @@ public class ObjType extends Cacheable {
             members = true;
         else if (i_2 == 23) {
             manmodel1 = buffer_1.method441();
-            int576 = buffer_1.method439();
+            int576 = buffer_1.readUByte();
         } else if (i_2 == 24)
             manmodel2 = buffer_1.method441();
         else if (i_2 == 25) {
             womanmodel1 = buffer_1.method441();
-            int577 = buffer_1.method439();
+            int577 = buffer_1.readUByte();
         } else if (i_2 == 26)
             womanmodel2 = buffer_1.method441();
         else if (i_2 >= 30 && i_2 < 35) {
@@ -160,7 +160,7 @@ public class ObjType extends Cacheable {
             int i_4;
             int i_5;
             if (i_2 == 40) {
-                i_4 = buffer_1.method439();
+                i_4 = buffer_1.readUByte();
                 recol_s = new short[i_4];
                 recol_d = new short[i_4];
 
@@ -169,7 +169,7 @@ public class ObjType extends Cacheable {
                     recol_d[i_5] = (short) buffer_1.method441();
                 }
             } else if (i_2 == 41) {
-                i_4 = buffer_1.method439();
+                i_4 = buffer_1.readUByte();
                 retex_s = new short[i_4];
                 retex_d = new short[i_4];
 
@@ -218,7 +218,7 @@ public class ObjType extends Cacheable {
             else if (i_2 == 114)
                 contrast = buffer_1.method440() * 5;
             else if (i_2 == 115)
-                team = buffer_1.method439();
+                team = buffer_1.readUByte();
             else if (i_2 == 139)
                 boughtlink = buffer_1.method441();
             else if (i_2 == 140)

@@ -6,7 +6,7 @@ public class StaticClass46 {
     }
 
     static final ParamList staticMethod195(Buffer buffer_0, ParamList paramlist_1) {
-        int i_3 = buffer_0.method439();
+        int i_3 = buffer_0.readUByte();
         int i_4;
         if (paramlist_1 == null) {
             i_4 = StaticClass25.staticMethod149(i_3);
@@ -14,7 +14,7 @@ public class StaticClass46 {
         }
 
         for (i_4 = 0; i_4 < i_3; i_4++) {
-            boolean bool_5 = buffer_0.method439() == 1;
+            boolean bool_5 = buffer_0.readUByte() == 1;
             int i_6 = buffer_0.method443();
             Object obj_7;
             if (bool_5)

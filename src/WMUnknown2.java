@@ -57,8 +57,8 @@ public class WMUnknown2 implements WMUnknown {
 
     @Override
     public void method6(Buffer buffer_1) {
-        int48 = buffer_1.method439();
-        int49 = buffer_1.method439();
+        int48 = buffer_1.readUByte();
+        int49 = buffer_1.readUByte();
         int45 = buffer_1.method441();
         int46 = buffer_1.method441();
         int47 = buffer_1.method441();

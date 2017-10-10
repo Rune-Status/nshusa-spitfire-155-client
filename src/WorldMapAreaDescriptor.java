@@ -22,10 +22,10 @@ public class WorldMapAreaDescriptor {
         name = buffer_1.method448();
         worldMapCoord5 = new WorldMapCoord(buffer_1.readInt());
         int60 = buffer_1.readInt();
-        buffer_1.method439();
-        bool3 = buffer_1.method439() == 1;
-        int61 = buffer_1.method439();
-        int i_4 = buffer_1.method439();
+        buffer_1.readUByte();
+        bool3 = buffer_1.readUByte() == 1;
+        int61 = buffer_1.readUByte();
+        int i_4 = buffer_1.readUByte();
         linkedList2 = new LinkedList();
 
         for (int i_5 = 0; i_5 < i_4; i_5++)
@@ -35,7 +35,7 @@ public class WorldMapAreaDescriptor {
     }
 
     WMUnknown method65(Buffer buffer_1) {
-        int i_3 = buffer_1.method439();
+        int i_3 = buffer_1.readUByte();
         WMEnum5 wmenum5_4 = (WMEnum5) StaticClass26.staticMethod155(WMEnum5.staticMethod1(), i_3);
         Object obj_5 = null;
         switch (wmenum5_4.int38) {

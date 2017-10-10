@@ -115,7 +115,7 @@ public class MidiFile {
     int method278(int i_1, int i_2) {
         int i_4;
         if (i_2 == 255) {
-            int i_7 = buffer2.method439();
+            int i_7 = buffer2.readUByte();
             i_4 = buffer2.method456();
             if (i_7 == 47) {
                 buffer2.off += i_4;
@@ -136,10 +136,10 @@ public class MidiFile {
             byte b_3 = staticByteArray4[i_2 - 128];
             i_4 = i_2;
             if (b_3 >= 1)
-                i_4 = i_2 | buffer2.method439() << 8;
+                i_4 = i_2 | buffer2.readUByte() << 8;
 
             if (b_3 >= 2)
-                i_4 |= buffer2.method439() << 16;
+                i_4 |= buffer2.readUByte() << 16;
 
             return i_4;
         }

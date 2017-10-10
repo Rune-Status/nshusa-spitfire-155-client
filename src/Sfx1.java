@@ -101,7 +101,7 @@ public class Sfx1 extends Node {
 
             int i_6;
             do {
-                i_6 = buffer_2.method439();
+                i_6 = buffer_2.readUByte();
                 i_5 += i_6;
             } while (i_6 >= 255);
 

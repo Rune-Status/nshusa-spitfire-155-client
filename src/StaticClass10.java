@@ -495,9 +495,9 @@ public class StaticClass10 {
         for (int i_2 = 0; i_2 < staticInt51; i_2++) {
             int i_3 = staticIntArray23[i_2];
             Player player_4 = Client.staticPlayerArray1[i_3];
-            int i_5 = packet_0.method439();
+            int i_5 = packet_0.readUByte();
             if ((i_5 & 0x4) != 0)
-                i_5 += packet_0.method439() << 8;
+                i_5 += packet_0.readUByte() << 8;
 
             byte b_6 = -1;
             if ((i_5 & 0x80) != 0) {
@@ -594,7 +594,7 @@ public class StaticClass10 {
                         player_4.method610(i_19, i_11, i_10, i_12, Client.staticInt166, i_13);
                     }
 
-                i_18 = packet_0.method439();
+                i_18 = packet_0.readUByte();
                 if (i_18 > 0)
                     for (i_19 = 0; i_19 < i_18; i_19++) {
                         i_10 = packet_0.method453();
@@ -614,13 +614,13 @@ public class StaticClass10 {
                 if (i_7 == 65535)
                     i_7 = -1;
 
-                i_18 = packet_0.method439();
+                i_18 = packet_0.readUByte();
                 Client.staticMethod275(player_4, i_7, i_18);
             }
 
             if ((i_5 & 0x10) != 0) {
                 i_7 = packet_0.readUShortLE();
-                Class6 class6_20 = (Class6) StaticClass26.staticMethod155(Class6.staticMethod175(), packet_0.method439());
+                Class6 class6_20 = (Class6) StaticClass26.staticMethod155(Class6.staticMethod175(), packet_0.readUByte());
                 boolean bool_22 = packet_0.method467() == 1;
                 i_10 = packet_0.method468();
                 i_11 = packet_0.off;

@@ -17,14 +17,14 @@ public class DataClass5 {
         Buffer buffer_3 = new Buffer(bytes_1);
         Buffer buffer_4 = new Buffer(bytes_1);
         buffer_3.off = 2;
-        int i_5 = buffer_3.method439();
+        int i_5 = buffer_3.readUByte();
         int i_6 = -1;
         int i_7 = 0;
         buffer_4.off = buffer_3.off + i_5;
 
         int i_8;
         for (i_8 = 0; i_8 < i_5; i_8++) {
-            int i_9 = buffer_3.method439();
+            int i_9 = buffer_3.readUByte();
             if (i_9 > 0) {
                 if (animTransform1.intArray49[i_8] != 0)
                     for (int i_10 = i_8 - 1; i_10 > i_6; --i_10)

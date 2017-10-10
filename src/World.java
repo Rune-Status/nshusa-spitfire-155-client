@@ -34,7 +34,7 @@ public class World {
                     world_4.int95 = buffer_2.readInt();
                     world_4.string8 = buffer_2.method448();
                     world_4.string9 = buffer_2.method448();
-                    world_4.int97 = buffer_2.method439();
+                    world_4.int97 = buffer_2.readUByte();
                     world_4.int96 = buffer_2.readShort();
                 }
 

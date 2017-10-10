@@ -67,7 +67,7 @@ public class InstrumentDef extends Node {
             i_12 = 2;
 
             for (i_14 = 2; i_14 < i_9; i_14++) {
-                int i_15 = buffer_2.method439();
+                int i_15 = buffer_2.readUByte();
                 if (i_15 == 0)
                     i_13 = i_12++;
                 else {
@@ -87,20 +87,20 @@ public class InstrumentDef extends Node {
         Mus4 mus4_38;
         for (i_14 = 0; i_14 < arr_37.length; i_14++) {
             mus4_38 = arr_37[i_14] = new Mus4();
-            int i_16 = buffer_2.method439();
+            int i_16 = buffer_2.readUByte();
             if (i_16 > 0)
                 mus4_38.byteArray5 = new byte[i_16 * 2];
 
-            i_16 = buffer_2.method439();
+            i_16 = buffer_2.readUByte();
             if (i_16 > 0) {
                 mus4_38.byteArray4 = new byte[i_16 * 2 + 2];
                 mus4_38.byteArray4[1] = 64;
             }
         }
 
-        i_14 = buffer_2.method439();
+        i_14 = buffer_2.readUByte();
         byte[] bytes_39 = i_14 > 0 ? new byte[i_14 * 2] : null;
-        i_14 = buffer_2.method439();
+        i_14 = buffer_2.readUByte();
         byte[] bytes_40 = i_14 > 0 ? new byte[i_14 * 2] : null;
 
         int i_17;
@@ -119,14 +119,14 @@ public class InstrumentDef extends Node {
 
         int i_20;
         for (i_20 = 0; i_20 < 128; i_20++) {
-            i_19 += buffer_2.method439();
+            i_19 += buffer_2.readUByte();
             shortArray1[i_20] = (short) i_19;
         }
 
         i_19 = 0;
 
         for (i_20 = 0; i_20 < 128; i_20++) {
-            i_19 += buffer_2.method439();
+            i_19 += buffer_2.readUByte();
             shortArray1[i_20] = (short) (shortArray1[i_20] + (i_19 << 8));
         }
 
@@ -221,14 +221,14 @@ public class InstrumentDef extends Node {
                     i_20 = -1;
 
                 if (intArray50[i_27] > 0)
-                    i_26 = buffer_2.method439() + 1;
+                    i_26 = buffer_2.readUByte() + 1;
             }
 
             byteArray8[i_27] = (byte) i_26;
             --i_20;
         }
 
-        int372 = buffer_2.method439() + 1;
+        int372 = buffer_2.readUByte() + 1;
 
         Mus4 mus4_28;
         int i_29;
@@ -257,7 +257,7 @@ public class InstrumentDef extends Node {
                 i_19 = 0;
 
                 for (i_29 = 2; i_29 < mus4_28.byteArray4.length; i_29 += 2) {
-                    i_19 = i_19 + 1 + buffer_2.method439();
+                    i_19 = i_19 + 1 + buffer_2.readUByte();
                     mus4_28.byteArray4[i_29] = (byte) i_19;
                 }
             }
@@ -269,7 +269,7 @@ public class InstrumentDef extends Node {
                 i_19 = 0;
 
                 for (i_29 = 2; i_29 < mus4_28.byteArray5.length; i_29 += 2) {
-                    i_19 = i_19 + 1 + buffer_2.method439();
+                    i_19 = i_19 + 1 + buffer_2.readUByte();
                     mus4_28.byteArray5[i_29] = (byte) i_19;
                 }
             }
@@ -282,11 +282,11 @@ public class InstrumentDef extends Node {
         int i_45;
         byte b_47;
         if (bytes_39 != null) {
-            i_19 = buffer_2.method439();
+            i_19 = buffer_2.readUByte();
             bytes_39[0] = (byte) i_19;
 
             for (i_27 = 2; i_27 < bytes_39.length; i_27 += 2) {
-                i_19 = i_19 + 1 + buffer_2.method439();
+                i_19 = i_19 + 1 + buffer_2.readUByte();
                 bytes_39[i_27] = (byte) i_19;
             }
 
@@ -318,11 +318,11 @@ public class InstrumentDef extends Node {
         }
 
         if (bytes_40 != null) {
-            i_19 = buffer_2.method439();
+            i_19 = buffer_2.readUByte();
             bytes_40[0] = (byte) i_19;
 
             for (i_27 = 2; i_27 < bytes_40.length; i_27 += 2) {
-                i_19 = i_19 + 1 + buffer_2.method439();
+                i_19 = i_19 + 1 + buffer_2.readUByte();
                 bytes_40[i_27] = (byte) i_19;
             }
 
@@ -378,33 +378,33 @@ public class InstrumentDef extends Node {
         }
 
         for (i_27 = 0; i_27 < i_12; i_27++)
-            arr_37[i_27].int247 = buffer_2.method439();
+            arr_37[i_27].int247 = buffer_2.readUByte();
 
         for (i_27 = 0; i_27 < i_12; i_27++) {
             mus4_28 = arr_37[i_27];
             if (mus4_28.byteArray5 != null)
-                mus4_28.int252 = buffer_2.method439();
+                mus4_28.int252 = buffer_2.readUByte();
 
             if (mus4_28.byteArray4 != null)
-                mus4_28.int246 = buffer_2.method439();
+                mus4_28.int246 = buffer_2.readUByte();
 
             if (mus4_28.int247 > 0)
-                mus4_28.int248 = buffer_2.method439();
+                mus4_28.int248 = buffer_2.readUByte();
         }
 
         for (i_27 = 0; i_27 < i_12; i_27++)
-            arr_37[i_27].int250 = buffer_2.method439();
+            arr_37[i_27].int250 = buffer_2.readUByte();
 
         for (i_27 = 0; i_27 < i_12; i_27++) {
             mus4_28 = arr_37[i_27];
             if (mus4_28.int250 > 0)
-                mus4_28.int249 = buffer_2.method439();
+                mus4_28.int249 = buffer_2.readUByte();
         }
 
         for (i_27 = 0; i_27 < i_12; i_27++) {
             mus4_28 = arr_37[i_27];
             if (mus4_28.int249 > 0)
-                mus4_28.int251 = buffer_2.method439();
+                mus4_28.int251 = buffer_2.readUByte();
         }
 
     }

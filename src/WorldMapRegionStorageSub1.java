@@ -1,12 +1,12 @@
 public class WorldMapRegionStorageSub1 extends WorldMapRegionStorage {
 
     void method514(Buffer buffer_1, Buffer buffer_2) {
-        int i_4 = buffer_2.method439();
+        int i_4 = buffer_2.readUByte();
         if (i_4 != DataClass2.staticDataClass2_1.int77)
             throw new IllegalStateException("");
         else {
-            int36 = buffer_2.method439();
-            int35 = buffer_2.method439();
+            int36 = buffer_2.readUByte();
+            int35 = buffer_2.readUByte();
             int34 = buffer_2.method441();
             int37 = buffer_2.method441();
             int32 = buffer_2.method441();
@@ -17,12 +17,12 @@ public class WorldMapRegionStorageSub1 extends WorldMapRegionStorage {
             byteArrayArrayArray1 = new byte[int35][64][64];
             byteArrayArrayArray2 = new byte[int35][64][64];
             tiles = new WorldMapTile[int35][64][64][];
-            i_4 = buffer_1.method439();
+            i_4 = buffer_1.readUByte();
             if (i_4 != DataClass1.staticDataClass1_2.int43)
                 throw new IllegalStateException("");
             else {
-                int i_5 = buffer_1.method439();
-                int i_6 = buffer_1.method439();
+                int i_5 = buffer_1.readUByte();
+                int i_6 = buffer_1.readUByte();
                 if (int32 == i_5 && int33 == i_6)
                     for (int i_7 = 0; i_7 < 64; i_7++)
                         for (int i_8 = 0; i_8 < 64; i_8++)

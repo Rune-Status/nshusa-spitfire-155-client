@@ -6,34 +6,34 @@ public class WorldMapRegionStorageSub2 extends WorldMapRegionStorage {
     int int307;
 
     void method388(Buffer buffer_1, Buffer buffer_2) {
-        int i_4 = buffer_2.method439();
+        int i_4 = buffer_2.readUByte();
         if (i_4 != DataClass2.staticDataClass2_2.int77)
             throw new IllegalStateException("");
         else {
-            int36 = buffer_2.method439();
-            int35 = buffer_2.method439();
+            int36 = buffer_2.readUByte();
+            int35 = buffer_2.readUByte();
             int34 = buffer_2.method441();
             int37 = buffer_2.method441();
-            int308 = buffer_2.method439();
-            int306 = buffer_2.method439();
+            int308 = buffer_2.readUByte();
+            int306 = buffer_2.readUByte();
             int32 = buffer_2.method441();
             int33 = buffer_2.method441();
-            int305 = buffer_2.method439();
-            int307 = buffer_2.method439();
+            int305 = buffer_2.readUByte();
+            int307 = buffer_2.readUByte();
             int35 = Math.min(int35, 4);
             shortArrayArrayArray1 = new short[1][64][64];
             shortArrayArrayArray2 = new short[int35][64][64];
             byteArrayArrayArray1 = new byte[int35][64][64];
             byteArrayArrayArray2 = new byte[int35][64][64];
             tiles = new WorldMapTile[int35][64][64][];
-            i_4 = buffer_1.method439();
+            i_4 = buffer_1.readUByte();
             if (DataClass1.staticDataClass1_1.int43 != i_4)
                 throw new IllegalStateException("");
             else {
-                int i_5 = buffer_1.method439();
-                int i_6 = buffer_1.method439();
-                int i_7 = buffer_1.method439();
-                int i_8 = buffer_1.method439();
+                int i_5 = buffer_1.readUByte();
+                int i_6 = buffer_1.readUByte();
+                int i_7 = buffer_1.readUByte();
+                int i_8 = buffer_1.readUByte();
                 if (int32 == i_5 && int33 == i_6 && int305 == i_7 && int307 == i_8)
                     for (int i_9 = 0; i_9 < 8; i_9++)
                         for (int i_10 = 0; i_10 < 8; i_10++)

@@ -99,7 +99,7 @@ public class LocType extends Cacheable {
 
     void decode(Buffer buffer_1) {
         while (true) {
-            int i_3 = buffer_1.method439();
+            int i_3 = buffer_1.readUByte();
             if (i_3 == 0)
                 return;
 
@@ -111,7 +111,7 @@ public class LocType extends Cacheable {
         int i_4;
         int i_5;
         if (i_2 == 1) {
-            i_4 = buffer_1.method439();
+            i_4 = buffer_1.readUByte();
             if (i_4 > 0)
                 if (intArray85 != null && !staticBool50)
                     buffer_1.off += i_4 * 3;
@@ -121,13 +121,13 @@ public class LocType extends Cacheable {
 
                     for (i_5 = 0; i_5 < i_4; i_5++) {
                         intArray85[i_5] = buffer_1.method441();
-                        intArray84[i_5] = buffer_1.method439();
+                        intArray84[i_5] = buffer_1.readUByte();
                     }
                 }
         } else if (i_2 == 2)
             string38 = buffer_1.method448();
         else if (i_2 == 5) {
-            i_4 = buffer_1.method439();
+            i_4 = buffer_1.readUByte();
             if (i_4 > 0)
                 if (intArray85 != null && !staticBool50)
                     buffer_1.off += i_4 * 2;
@@ -139,16 +139,16 @@ public class LocType extends Cacheable {
                         intArray85[i_5] = buffer_1.method441();
                 }
         } else if (i_2 == 14)
-            int518 = buffer_1.method439();
+            int518 = buffer_1.readUByte();
         else if (i_2 == 15)
-            int519 = buffer_1.method439();
+            int519 = buffer_1.readUByte();
         else if (i_2 == 17) {
             int520 = 0;
             bool54 = false;
         } else if (i_2 == 18)
             bool54 = false;
         else if (i_2 == 19)
-            int514 = buffer_1.method439();
+            int514 = buffer_1.readUByte();
         else if (i_2 == 21)
             int523 = 0;
         else if (i_2 == 22)
@@ -162,7 +162,7 @@ public class LocType extends Cacheable {
         } else if (i_2 == 27)
             int520 = 1;
         else if (i_2 == 28)
-            int521 = buffer_1.method439();
+            int521 = buffer_1.readUByte();
         else if (i_2 == 29)
             int522 = buffer_1.method440();
         else if (i_2 == 39)
@@ -172,7 +172,7 @@ public class LocType extends Cacheable {
             if (op[i_2 - 30].equalsIgnoreCase("Hidden"))
                 op[i_2 - 30] = null;
         } else if (i_2 == 40) {
-            i_4 = buffer_1.method439();
+            i_4 = buffer_1.readUByte();
             shortArray5 = new short[i_4];
             shortArray2 = new short[i_4];
 
@@ -181,7 +181,7 @@ public class LocType extends Cacheable {
                 shortArray2[i_5] = (short) buffer_1.method441();
             }
         } else if (i_2 == 41) {
-            i_4 = buffer_1.method439();
+            i_4 = buffer_1.readUByte();
             shortArray3 = new short[i_4];
             shortArray4 = new short[i_4];
 
@@ -202,7 +202,7 @@ public class LocType extends Cacheable {
         else if (i_2 == 68)
             int517 = buffer_1.method441();
         else if (i_2 == 69)
-            buffer_1.method439();
+            buffer_1.readUByte();
         else if (i_2 == 70)
             off = buffer_1.readShort();
         else if (i_2 == 71)
@@ -214,22 +214,22 @@ public class LocType extends Cacheable {
         else if (i_2 == 74)
             bool57 = true;
         else if (i_2 == 75)
-            int531 = buffer_1.method439();
+            int531 = buffer_1.readUByte();
         else if (i_2 != 77 && i_2 != 92) {
             if (i_2 == 78) {
                 int534 = buffer_1.method441();
-                int535 = buffer_1.method439();
+                int535 = buffer_1.readUByte();
             } else if (i_2 == 79) {
                 int516 = buffer_1.method441();
                 int525 = buffer_1.method441();
-                int535 = buffer_1.method439();
-                i_4 = buffer_1.method439();
+                int535 = buffer_1.readUByte();
+                i_4 = buffer_1.readUByte();
                 intArray87 = new int[i_4];
 
                 for (i_5 = 0; i_5 < i_4; i_5++)
                     intArray87[i_5] = buffer_1.method441();
             } else if (i_2 == 81)
-                int523 = buffer_1.method439() * 256;
+                int523 = buffer_1.readUByte() * 256;
             else if (i_2 == 82)
                 int524 = buffer_1.method441();
             else if (i_2 == 249)
@@ -250,7 +250,7 @@ public class LocType extends Cacheable {
                     i_4 = -1;
             }
 
-            i_5 = buffer_1.method439();
+            i_5 = buffer_1.readUByte();
             intArray86 = new int[i_5 + 2];
 
             for (int i_6 = 0; i_6 <= i_5; i_6++) {

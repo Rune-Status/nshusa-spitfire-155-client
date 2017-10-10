@@ -20,7 +20,7 @@ public class Class13 {
 
     public Class13(Buffer buffer_1, boolean bool_2) {
         int i_3 = buffer_1.method441();
-        boolean bool_4 = buffer_1.method439() == 1;
+        boolean bool_4 = buffer_1.readUByte() == 1;
         byte b_5;
         if (bool_4)
             b_5 = 1;

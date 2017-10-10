@@ -40,7 +40,7 @@ public class Config32 extends Cacheable {
 
     void decode(Buffer buffer_1) {
         while (true) {
-            int i_3 = buffer_1.method439();
+            int i_3 = buffer_1.readUByte();
             if (i_3 == 0)
                 return;
 
@@ -72,7 +72,7 @@ public class Config32 extends Cacheable {
         else if (i_2 == 11)
             int567 = 0;
         else if (i_2 == 12)
-            int571 = buffer_1.method439();
+            int571 = buffer_1.readUByte();
         else if (i_2 == 13)
             int569 = buffer_1.readShort();
         else if (i_2 == 14)
@@ -93,7 +93,7 @@ public class Config32 extends Cacheable {
                     i_4 = -1;
             }
 
-            int i_5 = buffer_1.method439();
+            int i_5 = buffer_1.readUByte();
             intArray94 = new int[i_5 + 2];
 
             for (int i_6 = 0; i_6 <= i_5; i_6++) {
