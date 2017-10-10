@@ -5849,7 +5849,7 @@ public final class Client extends GameShell {
 
                 // TODO find
                 if (staticInt189 == 254) {
-                    i_33 = staticPacket3.method486();
+                    i_33 = staticPacket3.readIntME();
                     i_4 = staticPacket3.method479();
                     widget_5 = Widget.staticMethod381(i_33);
                     if (i_4 != widget_5.int391 || i_4 == -1) {
@@ -5960,7 +5960,7 @@ public final class Client extends GameShell {
                 Widget widget_6;
                 if (staticInt189 == 188) {
                     i_33 = staticPacket3.method479();
-                    i_4 = staticPacket3.method486();
+                    i_4 = staticPacket3.readIntME();
                     i_35 = staticPacket3.readShort();
                     widget_6 = Widget.staticMethod381(i_4);
                     if (i_35 != widget_6.int401 || widget_6.int402 != i_33 || widget_6.int390 != 0 || widget_6.int398 != 0) {
@@ -6546,7 +6546,7 @@ public final class Client extends GameShell {
 
                 if (staticInt189 == 9) {
                     int id = staticPacket3.method441();
-                    int state = staticPacket3.method486();
+                    int state = staticPacket3.readIntME();
                     StaticClass44.staticIntArray66[id] = state;
                     if (StaticClass44.staticIntArray68[id] != state) {
                         StaticClass44.staticIntArray68[id] = state;
@@ -6598,7 +6598,7 @@ public final class Client extends GameShell {
 
                 if (staticInt189 == 16) {
                     i_33 = staticPacket3.readInt();
-                    i_4 = staticPacket3.method486();
+                    i_4 = staticPacket3.readIntME();
 
                     System.out.println(String.format("setInterfaceSets(%d, %d, %d, %d)", i_33 >> 16, i_33 & 0xFF, i_4 >> 16, i_4 & 0xFF));
 
@@ -6818,7 +6818,7 @@ public final class Client extends GameShell {
 
                 if (staticInt189 == 153) {
                     i_33 = staticPacket3.readUShortA();
-                    i_4 = staticPacket3.method486();
+                    i_4 = staticPacket3.readIntME();
                     widget_5 = Widget.staticMethod381(i_4);
                     if (widget_5.int423 != 2 || widget_5.int409 != i_33) {
                         widget_5.int423 = 2;
@@ -7171,7 +7171,7 @@ public final class Client extends GameShell {
 
                 if (staticInt189 == 49) {
                     i_33 = staticPacket3.readUShortLE();
-                    i_4 = staticPacket3.method486();
+                    i_4 = staticPacket3.readIntME();
                     i_35 = i_33 >> 10 & 0x1f;
                     i_45 = i_33 >> 5 & 0x1f;
                     i_42 = i_33 & 0x1f;

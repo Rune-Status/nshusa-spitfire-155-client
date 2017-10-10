@@ -533,7 +533,7 @@ public class StaticClass10 {
             int i_7;
             if ((i_5 & 0x800) != 0) {
                 player_4.int640 = packet_0.readUShortLEA();
-                i_7 = packet_0.method486();
+                i_7 = packet_0.readIntME();
                 player_4.int613 = i_7 >> 16;
                 player_4.int630 = (i_7 & 0xffff) + Client.staticInt166;
                 player_4.int631 = 0;
