@@ -189,7 +189,7 @@ public class Buffer extends Node {
         writeByte(i_1 & 0x7f);
     }
 
-    public int method439() {
+    public int readUByte() {
         return buf[off++] & 0xff;
     }
 
@@ -202,7 +202,7 @@ public class Buffer extends Node {
         return ((buf[off - 2] & 0xff) << 8) + (buf[off - 1] & 0xff);
     }
 
-    public int method442() {
+    public int readShort() {
         off += 2;
         int i_2 = (buf[off - 1] & 0xff) + ((buf[off - 2] & 0xff) << 8);
         if (i_2 > 32767)
@@ -216,19 +216,19 @@ public class Buffer extends Node {
         return (buf[off - 1] & 0xff) + ((buf[off - 3] & 0xff) << 16) + ((buf[off - 2] & 0xff) << 8);
     }
 
-    public int method444() {
+    public int readInt() {
         off += 4;
         return (buf[off - 1] & 0xff) + ((buf[off - 2] & 0xff) << 8) + ((buf[off - 3] & 0xff) << 16) + ((buf[off - 4] & 0xff) << 24);
     }
 
     public long method445() {
-        long long_2 = method444() & 0xffffffffL;
-        long long_4 = method444() & 0xffffffffL;
+        long long_2 = readInt() & 0xffffffffL;
+        long long_4 = readInt() & 0xffffffffL;
         return (long_2 << 32) + long_4;
     }
 
     public boolean method446() {
-        return (method439() & 0x1) == 1;
+        return (readUByte() & 0x1) == 1;
     }
 
     public String method447() {
@@ -288,21 +288,21 @@ public class Buffer extends Node {
 
     public int method452() {
         int i_2 = buf[off] & 0xff;
-        return i_2 < 128 ? method439() - 64 : method441() - 49152;
+        return i_2 < 128 ? readUByte() - 64 : method441() - 49152;
     }
 
     public int method453() {
         int i_2 = buf[off] & 0xff;
-        return i_2 < 128 ? method439() : method441() - 32768;
+        return i_2 < 128 ? readUByte() : method441() - 32768;
     }
 
     public int method454() {
-        return buf[off] < 0 ? method444() & 0x7fffffff : method441();
+        return buf[off] < 0 ? readInt() & 0x7fffffff : method441();
     }
 
     public int method455() {
         if (buf[off] < 0)
-            return method444() & 0x7fffffff;
+            return readInt() & 0x7fffffff;
         else {
             int i_2 = method441();
             return i_2 == 32767 ? -1 : i_2;
@@ -324,8 +324,8 @@ public class Buffer extends Node {
         off = 0;
 
         for (int i_4 = 0; i_4 < i_3; i_4++) {
-            int i_5 = method444();
-            int i_6 = method444();
+            int i_5 = readInt();
+            int i_6 = readInt();
             int i_7 = 0;
             int i_8 = -1640531527;
 
@@ -346,8 +346,8 @@ public class Buffer extends Node {
         off = 0;
 
         for (int i_4 = 0; i_4 < i_3; i_4++) {
-            int i_5 = method444();
-            int i_6 = method444();
+            int i_5 = readInt();
+            int i_6 = readInt();
             int i_7 = -957401312;
             int i_8 = -1640531527;
 
@@ -369,8 +369,8 @@ public class Buffer extends Node {
         int i_6 = (i_3 - i_2) / 8;
 
         for (int i_7 = 0; i_7 < i_6; i_7++) {
-            int i_8 = method444();
-            int i_9 = method444();
+            int i_8 = readInt();
+            int i_9 = readInt();
             int i_10 = 0;
             int i_11 = -1640531527;
 
@@ -393,8 +393,8 @@ public class Buffer extends Node {
         int i_6 = (i_3 - i_2) / 8;
 
         for (int i_7 = 0; i_7 < i_6; i_7++) {
-            int i_8 = method444();
-            int i_9 = method444();
+            int i_8 = readInt();
+            int i_9 = readInt();
             int i_10 = -957401312;
             int i_11 = -1640531527;
 
@@ -440,7 +440,10 @@ public class Buffer extends Node {
     public boolean method463() {
         off -= 4;
         int i_2 = staticMethod376(buf, 0, off);
-        int i_3 = method444();
+        int i_3 = readInt();
+
+        System.out.println("uid " + i_3);
+
         return i_2 == i_3;
     }
 
@@ -495,17 +498,17 @@ public class Buffer extends Node {
         buf[off++] = (byte) (i_1 >> 8);
     }
 
-    public int method476() {
+    public int readUShortLE() {
         off += 2;
         return (buf[off - 2] & 0xff) + ((buf[off - 1] & 0xff) << 8);
     }
 
-    public int method477() {
+    public int readUShortA() {
         off += 2;
         return ((buf[off - 2] & 0xff) << 8) + (buf[off - 1] - 128 & 0xff);
     }
 
-    public int method478() {
+    public int readUShortLEA() {
         off += 2;
         return ((buf[off - 1] & 0xff) << 8) + (buf[off - 2] - 128 & 0xff);
     }
@@ -551,17 +554,17 @@ public class Buffer extends Node {
         buf[off++] = (byte) (i_1 >> 8);
     }
 
-    public int method485() {
+    public int readIntLE() {
         off += 4;
         return ((buf[off - 1] & 0xff) << 24) + ((buf[off - 2] & 0xff) << 16) + ((buf[off - 3] & 0xff) << 8) + (buf[off - 4] & 0xff);
     }
 
-    public int method486() {
+    public int readIntME() {
         off += 4;
         return (buf[off - 3] & 0xff) + ((buf[off - 4] & 0xff) << 8) + ((buf[off - 1] & 0xff) << 16) + ((buf[off - 2] & 0xff) << 24);
     }
 
-    public int method487() {
+    public int readIntIM() {
         off += 4;
         return (buf[off - 2] & 0xff) + ((buf[off - 3] & 0xff) << 24) + ((buf[off - 4] & 0xff) << 16) + ((buf[off - 1] & 0xff) << 8);
     }

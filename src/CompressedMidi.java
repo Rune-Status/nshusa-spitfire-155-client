@@ -10,7 +10,7 @@ public class CompressedMidi extends Node {
 
     CompressedMidi(Buffer buffer_1) {
         buffer_1.off = buffer_1.buf.length - 3;
-        int i_2 = buffer_1.method439();
+        int i_2 = buffer_1.readUByte();
         int i_3 = buffer_1.method441();
         int i_4 = 14 + i_2 * 10;
         buffer_1.off = 0;
@@ -30,7 +30,7 @@ public class CompressedMidi extends Node {
             i_14 = -1;
 
             while (true) {
-                i_15 = buffer_1.method439();
+                i_15 = buffer_1.readUByte();
                 if (i_15 != i_14)
                     ++i_4;
 
@@ -88,7 +88,7 @@ public class CompressedMidi extends Node {
 
         int i_29;
         for (i_29 = 0; i_29 < i_6; i_29++) {
-            i_28 = i_28 + buffer_1.method439() & 0x7f;
+            i_28 = i_28 + buffer_1.readUByte() & 0x7f;
             if (i_28 != 0 && i_28 != 32) {
                 if (i_28 == 1)
                     ++i_16;

@@ -6,7 +6,7 @@ public class Config19 extends Cacheable {
 
     public void decode(Buffer buffer_1) {
         while (true) {
-            int i_3 = buffer_1.method439();
+            int i_3 = buffer_1.readUByte();
             if (i_3 == 0)
                 return;
 

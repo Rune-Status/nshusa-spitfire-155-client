@@ -50,8 +50,8 @@ public class WorldMapAreaDescriptorSub extends WorldMapAreaDescriptor {
 
         for (int i_5 = 0; i_5 < i_4; i_5++) {
             int i_6 = buffer_1.method455();
-            WorldMapCoord worldmapcoord_7 = new WorldMapCoord(buffer_1.method444());
-            boolean bool_8 = buffer_1.method439() == 1;
+            WorldMapCoord worldmapcoord_7 = new WorldMapCoord(buffer_1.readInt());
+            boolean bool_8 = buffer_1.readUByte() == 1;
             if (bool_2 || !bool_8)
                 list4.add(new WM3(i_6, worldmapcoord_7));
         }

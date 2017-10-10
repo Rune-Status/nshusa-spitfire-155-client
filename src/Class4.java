@@ -175,7 +175,7 @@ public class Class4 {
             if (buffer_24.buf.length - buffer_24.off < 1)
                 return;
 
-            int i_6 = buffer_24.method439();
+            int i_6 = buffer_24.readUByte();
             if (i_6 < 0 || i_6 > 1)
                 return;
 
@@ -186,7 +186,7 @@ public class Class4 {
             int i_10;
             for (i_8 = 0; i_8 < i_7; i_8++) {
                 i_9 = buffer_24.method441();
-                i_10 = buffer_24.method444();
+                i_10 = buffer_24.readInt();
                 if (boolArray1[i_9])
                     intArray5[i_9] = i_10;
             }

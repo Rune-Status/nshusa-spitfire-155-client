@@ -14,8 +14,8 @@ public class Texture extends Node {
 
     Texture(Buffer buffer_1) {
         int355 = buffer_1.method441();
-        bool27 = buffer_1.method439() == 1;
-        int i_2 = buffer_1.method439();
+        bool27 = buffer_1.readUByte() == 1;
+        int i_2 = buffer_1.readUByte();
         if (i_2 >= 1 && i_2 <= 4) {
             intArray44 = new int[i_2];
 
@@ -27,23 +27,23 @@ public class Texture extends Node {
                 intArray46 = new int[i_2 - 1];
 
                 for (i_3 = 0; i_3 < i_2 - 1; i_3++)
-                    intArray46[i_3] = buffer_1.method439();
+                    intArray46[i_3] = buffer_1.readUByte();
             }
 
             if (i_2 > 1) {
                 intArray47 = new int[i_2 - 1];
 
                 for (i_3 = 0; i_3 < i_2 - 1; i_3++)
-                    intArray47[i_3] = buffer_1.method439();
+                    intArray47[i_3] = buffer_1.readUByte();
             }
 
             intArray48 = new int[i_2];
 
             for (i_3 = 0; i_3 < i_2; i_3++)
-                intArray48[i_3] = buffer_1.method444();
+                intArray48[i_3] = buffer_1.readInt();
 
-            int356 = buffer_1.method439();
-            int357 = buffer_1.method439();
+            int356 = buffer_1.readUByte();
+            int357 = buffer_1.readUByte();
             intArray45 = null;
         } else
             throw new RuntimeException();

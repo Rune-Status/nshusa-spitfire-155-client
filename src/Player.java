@@ -41,9 +41,10 @@ public final class Player extends Actor {
         bool76 = false;
     }
 
+    // player appearance
     final void method695(Buffer buffer_1) {
         buffer_1.off = 0;
-        int i_3 = buffer_1.method439();
+        int i_3 = buffer_1.readUByte();
         skullId = buffer_1.method440();
         prayerId = buffer_1.method440();
         int i_4 = -1;
@@ -53,11 +54,11 @@ public final class Player extends Actor {
         int i_7;
         int i_8;
         for (int i_6 = 0; i_6 < 12; i_6++) {
-            i_7 = buffer_1.method439();
+            i_7 = buffer_1.readUByte();
             if (i_7 == 0)
                 ints_5[i_6] = 0;
             else {
-                i_8 = buffer_1.method439();
+                i_8 = buffer_1.readUByte();
                 ints_5[i_6] = i_8 + (i_7 << 8);
                 if (i_6 == 0 && ints_5[0] == 65535) {
                     i_4 = buffer_1.method441();
@@ -75,7 +76,7 @@ public final class Player extends Actor {
         int[] ints_10 = new int[5];
 
         for (i_7 = 0; i_7 < 5; i_7++) {
-            i_8 = buffer_1.method439();
+            i_8 = buffer_1.readUByte();
             if (i_8 < 0 || i_8 >= Mus5Sub4.staticShortArrayArray4[i_7].length)
                 i_8 = 0;
 
@@ -115,9 +116,9 @@ public final class Player extends Actor {
         if (this == BufferWrapper.staticPlayer1)
             ClientError.staticString24 = name;
 
-        combatLevel = buffer_1.method439();
+        combatLevel = buffer_1.readUByte();
         skillLevel = buffer_1.method441();
-        bool78 = buffer_1.method439() == 1;
+        bool78 = buffer_1.readUByte() == 1;
         if (Client.staticInt162 == 0 && Client.staticInt246 >= 2)
             bool78 = false;
 

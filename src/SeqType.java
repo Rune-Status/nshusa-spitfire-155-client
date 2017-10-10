@@ -39,7 +39,7 @@ public class SeqType extends Cacheable {
 
     void decode(Buffer buffer_1) {
         while (true) {
-            int i_3 = buffer_1.method439();
+            int i_3 = buffer_1.readUByte();
             if (i_3 == 0)
                 return;
 
@@ -67,31 +67,31 @@ public class SeqType extends Cacheable {
         } else if (i_2 == 2)
             frameStep = buffer_1.method441();
         else if (i_2 == 3) {
-            i_4 = buffer_1.method439();
+            i_4 = buffer_1.readUByte();
             intArray96 = new int[i_4 + 1];
 
             for (i_5 = 0; i_5 < i_4; i_5++)
-                intArray96[i_5] = buffer_1.method439();
+                intArray96[i_5] = buffer_1.readUByte();
 
             intArray96[i_4] = 9999999;
         } else if (i_2 == 4)
             bool68 = true;
         else if (i_2 == 5)
-            int605 = buffer_1.method439();
+            int605 = buffer_1.readUByte();
         else if (i_2 == 6)
             leftHandItem = buffer_1.method441();
         else if (i_2 == 7)
             rightHandItem = buffer_1.method441();
         else if (i_2 == 8)
-            int606 = buffer_1.method439();
+            int606 = buffer_1.readUByte();
         else if (i_2 == 9)
-            int607 = buffer_1.method439();
+            int607 = buffer_1.readUByte();
         else if (i_2 == 10)
-            priority = buffer_1.method439();
+            priority = buffer_1.readUByte();
         else if (i_2 == 11)
-            delayType = buffer_1.method439();
+            delayType = buffer_1.readUByte();
         else if (i_2 == 12) {
-            i_4 = buffer_1.method439();
+            i_4 = buffer_1.readUByte();
             intArray95 = new int[i_4];
 
             for (i_5 = 0; i_5 < i_4; i_5++)
@@ -100,7 +100,7 @@ public class SeqType extends Cacheable {
             for (i_5 = 0; i_5 < i_4; i_5++)
                 intArray95[i_5] += buffer_1.method441() << 16;
         } else if (i_2 == 13) {
-            i_4 = buffer_1.method439();
+            i_4 = buffer_1.readUByte();
             intArray97 = new int[i_4];
 
             for (i_5 = 0; i_5 < i_4; i_5++)

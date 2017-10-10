@@ -14,7 +14,7 @@ public class Underlay extends Cacheable {
 
     void decode(Buffer buffer_1, int i_2) {
         while (true) {
-            int i_4 = buffer_1.method439();
+            int i_4 = buffer_1.readUByte();
             if (i_4 == 0)
                 return;
 

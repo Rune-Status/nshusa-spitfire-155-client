@@ -69,13 +69,13 @@ public class SoundFilter {
     }
 
     final void method172(Buffer buffer_1, AudioEnvelope audioenvelope_2) {
-        int i_3 = buffer_1.method439();
+        int i_3 = buffer_1.readUByte();
         intArray31[0] = i_3 >> 4;
         intArray31[1] = i_3 & 0xf;
         if (i_3 != 0) {
             intArray32[0] = buffer_1.method441();
             intArray32[1] = buffer_1.method441();
-            int i_4 = buffer_1.method439();
+            int i_4 = buffer_1.readUByte();
 
             int i_5;
             int i_6;

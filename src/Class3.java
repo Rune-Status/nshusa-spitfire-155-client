@@ -11,8 +11,8 @@ public class Class3 {
         string3 = buffer_1.method448();
         int78 = buffer_1.method441();
         long1 = buffer_1.method445();
-        int i_4 = buffer_1.method444();
-        int i_5 = buffer_1.method444();
+        int i_4 = buffer_1.readInt();
+        int i_5 = buffer_1.readInt();
         exchangeOffer1 = new ExchangeOffer();
         exchangeOffer1.method313(2);
         exchangeOffer1.method314(b_2);

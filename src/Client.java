@@ -1066,7 +1066,7 @@ public final class Client extends GameShell {
                                                                             int i_26 = i_24 & 0x3f;
                                                                             int i_27 = i_24 >> 6 & 0x3f;
                                                                             int i_28 = i_24 >> 12;
-                                                                            int i_29 = buffer_21.method439();
+                                                                            int i_29 = buffer_21.readUByte();
                                                                             int i_30 = i_29 >> 2;
                                                                             int i_31 = i_29 & 0x3;
                                                                             if (i_8 == i_28 && i_27 >= i_17 && i_27 < i_17 + 8 && i_26 >= i_18 && i_26 < i_18 + 8) {
@@ -1171,6 +1171,8 @@ public final class Client extends GameShell {
                                 staticMethod301();
                                 LocType.staticCache11.method264();
                                 if (NodeSub2.staticClient1.method123()) {
+
+                                    // dummy or anticheat
                                     staticPacket1.writeOpcode(64);
                                     staticPacket1.writeInt(1057001181);
                                 }
@@ -2219,7 +2221,9 @@ public final class Client extends GameShell {
                         StaticClass54.staticConnection4.read(staticPacket3.buf, 0, staticInt287);
                         staticClass10_1.method320();
                         staticMethod256();
-                        StaticClass10.staticMethod52(staticPacket3);
+
+                        // gpi init
+                        StaticClass10.initGPI(staticPacket3);
                         WM7.staticInt13 = -1;
                         staticMethod295(false);
                         staticInt189 = -1;
@@ -2261,7 +2265,7 @@ public final class Client extends GameShell {
                             i_2 = staticInt287;
                             staticClass10_1.method322();
                             staticMethod257();
-                            StaticClass10.staticMethod52(staticPacket3);
+                            StaticClass10.initGPI(staticPacket3);
                             if (staticPacket3.off != i_2)
                                 throw new RuntimeException();
                         }
@@ -5332,14 +5336,14 @@ public final class Client extends GameShell {
         int i_7;
         int i_8;
         if (!staticBool30) {
-            i_2 = staticPacket3.method478();
-            int i_3 = staticPacket3.method477();
+            i_2 = staticPacket3.readUShortLEA();
+            int i_3 = staticPacket3.readUShortA();
             i_4 = staticPacket3.method441();
             StaticClass2.staticIntArrayArray1 = new int[i_4][4];
 
             for (i_5 = 0; i_5 < i_4; i_5++)
                 for (i_6 = 0; i_6 < 4; i_6++)
-                    StaticClass2.staticIntArrayArray1[i_5][i_6] = staticPacket3.method444();
+                    StaticClass2.staticIntArrayArray1[i_5][i_6] = staticPacket3.readInt();
 
             HitMark.staticIntArray78 = new int[i_4];
             BuildType.staticIntArray69 = new int[i_4];
@@ -5368,7 +5372,7 @@ public final class Client extends GameShell {
 
             staticMethod296(i_2, i_3, true);
         } else {
-            i_2 = staticPacket3.method478();
+            i_2 = staticPacket3.readUShortLEA();
             boolean bool_15 = staticPacket3.method468() == 1;
             i_4 = staticPacket3.method441();
             i_5 = staticPacket3.method441();
@@ -5390,7 +5394,7 @@ public final class Client extends GameShell {
 
             for (i_6 = 0; i_6 < i_5; i_6++)
                 for (i_7 = 0; i_7 < 4; i_7++)
-                    StaticClass2.staticIntArrayArray1[i_6][i_7] = staticPacket3.method444();
+                    StaticClass2.staticIntArrayArray1[i_6][i_7] = staticPacket3.readInt();
 
             HitMark.staticIntArray78 = new int[i_5];
             BuildType.staticIntArray69 = new int[i_5];
@@ -5686,6 +5690,7 @@ public final class Client extends GameShell {
 
     }
 
+    // read packets
     final boolean method403() {
         if (StaticClass54.staticConnection4 == null)
             return false;
@@ -5715,6 +5720,7 @@ public final class Client extends GameShell {
                 }
 
                 if (staticInt287 == -2) {
+
                     if (i_2 <= 1)
                         return false;
 
@@ -5736,6 +5742,8 @@ public final class Client extends GameShell {
                 staticInt192 = -staticInt189;
                 int i_33;
                 String string_36;
+
+                // TODO identify packet
                 if (staticInt189 == 117) {
                     i_33 = staticPacket3.method469();
                     i_4 = staticPacket3.method468();
@@ -5754,19 +5762,24 @@ public final class Client extends GameShell {
 
                 Widget widget_5;
                 String string_38;
+
+                // interface text
                 if (staticInt189 == 42) {
-                    i_33 = staticPacket3.method444();
-                    string_38 = staticPacket3.method448();
-                    widget_5 = Widget.staticMethod381(i_33);
-                    if (!string_38.equals(widget_5.string25)) {
-                        widget_5.string25 = string_38;
+                    int packed = staticPacket3.readInt();
+                    String message = staticPacket3.method448();
+                    widget_5 = Widget.staticMethod381(packed);
+                    if (!message.equals(widget_5.string25)) {
+                        widget_5.string25 = message;
                         staticMethod342(widget_5);
                     }
+
+                    System.out.println(String.format("setInterfaceText(%d, %d, %s)", packed >> 16, packed & 0xFF, message));
 
                     staticInt189 = -1;
                     return true;
                 }
 
+                // setInterface
                 if (staticInt189 == 126) {
                     Actor.staticInt318 = staticPacket3.method467();
                     WorldMapTile.staticInt5 = staticPacket3.method467();
@@ -5789,10 +5802,15 @@ public final class Client extends GameShell {
                 int i_35;
                 int i_52;
                 NodeSub1 nodesub1_75;
+
+                // set interface
                 if (staticInt189 == 127) {
                     i_33 = staticPacket3.method469();
-                    i_4 = staticPacket3.method476();
-                    i_35 = staticPacket3.method487();
+                    i_4 = staticPacket3.readUShortLE();
+                    i_35 = staticPacket3.readIntIM();
+
+                    System.out.println(String.format("setInterface(%d, %d, %d, %b)", i_35 >> 16, i_35 & 0xFF, i_4, i_33 == 1));
+
                     nodesub1_75 = (NodeSub1) staticHashTable7.get(i_35);
                     if (nodesub1_75 != null)
                         staticMethod350(nodesub1_75, nodesub1_75.int317 != i_4);
@@ -5822,14 +5840,16 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // force logout
                 if (staticInt189 == 28) {
                     staticMethod259();
                     staticInt189 = -1;
                     return false;
                 }
 
+                // TODO find
                 if (staticInt189 == 254) {
-                    i_33 = staticPacket3.method486();
+                    i_33 = staticPacket3.readIntME();
                     i_4 = staticPacket3.method479();
                     widget_5 = Widget.staticMethod381(i_33);
                     if (i_4 != widget_5.int391 || i_4 == -1) {
@@ -5838,11 +5858,11 @@ public final class Client extends GameShell {
                         widget_5.int455 = 0;
                         staticMethod342(widget_5);
                     }
-
                     staticInt189 = -1;
                     return true;
                 }
 
+                // static region
                 if (staticInt189 == 150) {
                     staticMethod295(false);
                     staticPacket3.readOpcode();
@@ -5852,12 +5872,13 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // TODO find
                 if (staticInt189 == 88) {
-                    staticInt179 = staticPacket3.method439();
+                    staticInt179 = staticPacket3.readUByte();
                     if (staticInt179 == 255)
                         staticInt179 = 0;
 
-                    staticInt281 = staticPacket3.method439();
+                    staticInt281 = staticPacket3.readUByte();
                     if (staticInt281 == 255)
                         staticInt281 = 0;
 
@@ -5865,20 +5886,24 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // root interface
                 if (staticInt189 == 30) {
-                    i_33 = staticPacket3.method441();
-                    staticInt241 = i_33;
+                    int rootInterfaceId = staticPacket3.method441();
+                    staticInt241 = rootInterfaceId;
                     method407(false);
-                    staticMethod346(i_33);
+                    staticMethod346(rootInterfaceId);
                     StaticClass15.staticMethod101(staticInt241);
 
                     for (i_4 = 0; i_4 < 100; i_4++)
                         staticBoolArray7[i_4] = true;
 
+                    System.out.println(String.format("setRootInterface(%d)", rootInterfaceId));
+
                     staticInt189 = -1;
                     return true;
                 }
 
+                // dynamic region
                 if (staticInt189 == 148) {
                     staticMethod295(true);
                     staticPacket3.readOpcode();
@@ -5891,9 +5916,11 @@ public final class Client extends GameShell {
                 String string_37;
                 int i_42;
                 boolean bool_49;
+
+                // something to do with ignores, rename ignores??
                 if (staticInt189 == 86) {
                     while (staticPacket3.off < staticInt287) {
-                        i_33 = staticPacket3.method439();
+                        i_33 = staticPacket3.readUByte();
                         bool_49 = (i_33 & 0x1) == 1;
                         string_36 = staticPacket3.method448();
                         string_37 = staticPacket3.method448();
@@ -5933,8 +5960,8 @@ public final class Client extends GameShell {
                 Widget widget_6;
                 if (staticInt189 == 188) {
                     i_33 = staticPacket3.method479();
-                    i_4 = staticPacket3.method486();
-                    i_35 = staticPacket3.method442();
+                    i_4 = staticPacket3.readIntME();
+                    i_35 = staticPacket3.readShort();
                     widget_6 = Widget.staticMethod381(i_4);
                     if (i_35 != widget_6.int401 || widget_6.int402 != i_33 || widget_6.int390 != 0 || widget_6.int398 != 0) {
                         widget_6.int401 = i_35;
@@ -5954,9 +5981,9 @@ public final class Client extends GameShell {
                 int i_45;
                 if (staticInt189 == 33) {
                     staticMethod343();
-                    i_33 = staticPacket3.method439();
-                    i_4 = staticPacket3.method439();
-                    i_35 = staticPacket3.method487();
+                    i_33 = staticPacket3.readUByte();
+                    i_4 = staticPacket3.readUByte();
+                    i_35 = staticPacket3.readIntIM();
                     staticIntArray96[i_4] = i_35;
                     staticIntArray84[i_4] = i_33;
                     staticIntArray95[i_4] = 1;
@@ -5971,14 +5998,16 @@ public final class Client extends GameShell {
                 }
 
                 long long_50;
+
+                // interface settings
                 if (staticInt189 == 72) {
-                    i_33 = staticPacket3.method477();
+                    i_33 = staticPacket3.readUShortA();
                     if (i_33 == 65535)
                         i_33 = -1;
 
-                    i_4 = staticPacket3.method487();
-                    i_35 = staticPacket3.method444();
-                    i_45 = staticPacket3.method477();
+                    i_4 = staticPacket3.readIntIM();
+                    i_35 = staticPacket3.readInt();
+                    i_45 = staticPacket3.readUShortA();
                     if (i_45 == 65535)
                         i_45 = -1;
 
@@ -5996,8 +6025,8 @@ public final class Client extends GameShell {
                 }
 
                 if (staticInt189 == 97) {
-                    i_33 = staticPacket3.method439();
-                    if (staticPacket3.method439() == 0) {
+                    i_33 = staticPacket3.readUByte();
+                    if (staticPacket3.readUByte() == 0) {
                         staticExchangeOfferArray1[i_33] = new ExchangeOffer();
                         staticPacket3.off += 18;
                     } else {
@@ -6011,7 +6040,7 @@ public final class Client extends GameShell {
                 }
 
                 if (staticInt189 == 24) {
-                    i_33 = staticPacket3.method444();
+                    i_33 = staticPacket3.readInt();
                     i_4 = staticPacket3.method441();
                     widget_5 = Widget.staticMethod381(i_33);
                     if (widget_5 != null && widget_5.type == 0) {
@@ -6031,6 +6060,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // npc updating
                 if (staticInt189 == 108) {
                     staticMethod305(true);
                     staticInt189 = -1;
@@ -6038,22 +6068,23 @@ public final class Client extends GameShell {
                 }
 
                 if (staticInt189 == 109) {
-                    Actor.staticInt318 = staticPacket3.method439();
-                    WorldMapTile.staticInt5 = staticPacket3.method439();
+                    Actor.staticInt318 = staticPacket3.readUByte();
+                    WorldMapTile.staticInt5 = staticPacket3.readUByte();
                     staticInt189 = -1;
                     return true;
                 }
 
                 if (staticInt189 == 159) {
-                    staticInt275 = staticPacket3.method439();
-                    staticInt217 = staticPacket3.method439();
+                    staticInt275 = staticPacket3.readUByte();
+                    staticInt217 = staticPacket3.readUByte();
                     staticInt189 = -1;
                     return true;
                 }
 
+                // weight
                 if (staticInt189 == 249) {
                     staticMethod343();
-                    staticInt245 = staticPacket3.method442();
+                    staticInt245 = staticPacket3.readShort();
                     staticInt264 = staticInt256;
                     staticInt189 = -1;
                     return true;
@@ -6077,8 +6108,8 @@ public final class Client extends GameShell {
 
                 Widget widget_66;
                 if (staticInt189 == 27) {
-                    i_33 = staticPacket3.method444();
-                    i_4 = staticPacket3.method476();
+                    i_33 = staticPacket3.readInt();
+                    i_4 = staticPacket3.readUShortLE();
                     i_35 = staticPacket3.method441();
                     i_45 = staticPacket3.method441();
                     widget_66 = Widget.staticMethod381(i_33);
@@ -6094,10 +6125,10 @@ public final class Client extends GameShell {
                 }
 
                 if (staticInt189 == 70) {
-                    i_33 = staticPacket3.method439();
-                    i_4 = staticPacket3.method439();
-                    i_35 = staticPacket3.method439();
-                    i_45 = staticPacket3.method439();
+                    i_33 = staticPacket3.readUByte();
+                    i_4 = staticPacket3.readUByte();
+                    i_35 = staticPacket3.readUByte();
+                    i_45 = staticPacket3.readUByte();
                     staticBoolArray9[i_33] = true;
                     staticIntArray116[i_33] = i_4;
                     staticIntArray98[i_33] = i_35;
@@ -6108,7 +6139,8 @@ public final class Client extends GameShell {
                 }
 
                 if (staticInt189 == 222) {
-                    i_33 = staticPacket3.method477();
+                    i_33 = staticPacket3.readUShortA();
+                    i_33 = -1;
                     if (i_33 == 65535)
                         i_33 = -1;
 
@@ -6131,30 +6163,40 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // play song
                 if (staticInt189 == 90) {
-                    i_33 = staticPacket3.method477();
-                    if (i_33 == 65535)
-                        i_33 = -1;
+                    int songId = staticPacket3.readUShortA();
+
+                    if (songId == 65535) {
+                        songId = -1;
+                    }
 
                     i_4 = staticPacket3.method481();
-                    if (staticInt197 != 0 && i_33 != -1) {
-                        StaticClass32.staticMethod164(Renderable.staticJs5IndexImpl15, i_33, 0, staticInt197, false);
+
+                    if (staticInt197 != 0 && songId != -1) {
+                        StaticClass32.staticMethod164(Renderable.staticJs5IndexImpl15, songId, 0, staticInt197, false);
                         staticBool43 = true;
                     }
+
+                    System.out.println(String.format("playSong(%d)", songId));
 
                     staticInt189 = -1;
                     return true;
                 }
 
+                // varp small
                 if (staticInt189 == 185) {
-                    byte b_107 = staticPacket3.method472();
-                    i_4 = staticPacket3.method478();
-                    StaticClass44.staticIntArray66[i_4] = b_107;
-                    if (StaticClass44.staticIntArray68[i_4] != b_107)
-                        StaticClass44.staticIntArray68[i_4] = b_107;
+                    byte state = staticPacket3.method472();
+                    int id = staticPacket3.readUShortLEA();
+                    StaticClass44.staticIntArray66[id] = state;
+                    if (StaticClass44.staticIntArray68[id] != state) {
+                        StaticClass44.staticIntArray68[id] = state;
+                    }
 
-                    staticMethod348(i_4);
-                    staticIntArray103[staticInt257++ & 0x1f] = i_4;
+                    System.out.println(String.format("setVarp(%d, %d)", id, state));
+
+                    staticMethod348(id);
+                    staticIntArray103[staticInt257++ & 0x1f] = id;
                     staticInt189 = -1;
                     return true;
                 }
@@ -6174,7 +6216,7 @@ public final class Client extends GameShell {
 
                 if (staticInt189 == 226) {
                     staticMethod343();
-                    staticInt244 = staticPacket3.method439();
+                    staticInt244 = staticPacket3.readUByte();
                     staticInt264 = staticInt256;
                     staticInt189 = -1;
                     return true;
@@ -6191,8 +6233,8 @@ public final class Client extends GameShell {
                     packet_71 = staticPacket3;
                     i_4 = staticInt287;
                     Config34 config34_96 = new Config34();
-                    config34_96.int465 = packet_71.method439();
-                    config34_96.int464 = packet_71.method444();
+                    config34_96.int465 = packet_71.readUByte();
+                    config34_96.int464 = packet_71.readInt();
                     config34_96.intArray62 = new int[config34_96.int465];
                     config34_96.intArray61 = new int[config34_96.int465];
                     config34_96.fieldArray1 = new Field[config34_96.int465];
@@ -6202,13 +6244,13 @@ public final class Client extends GameShell {
 
                     for (i_45 = 0; i_45 < config34_96.int465; i_45++)
                         try {
-                            i_42 = packet_71.method439();
+                            i_42 = packet_71.readUByte();
                             String string_97;
                             if (i_42 != 0 && i_42 != 1 && i_42 != 2) {
                                 if (i_42 == 3 || i_42 == 4) {
                                     string_8 = packet_71.method448();
                                     string_97 = packet_71.method448();
-                                    i_54 = packet_71.method439();
+                                    i_54 = packet_71.readUByte();
                                     String[] arr_91 = new String[i_54];
 
                                     for (i_12 = 0; i_12 < i_54; i_12++)
@@ -6218,7 +6260,7 @@ public final class Client extends GameShell {
                                     byte[][] bytes_106 = new byte[i_54][];
                                     if (i_42 == 3)
                                         for (i_14 = 0; i_14 < i_54; i_14++) {
-                                            i_15 = packet_71.method444();
+                                            i_15 = packet_71.readInt();
                                             bytes_106[i_14] = new byte[i_15];
                                             packet_71.method451(bytes_106[i_14], 0, i_15);
                                         }
@@ -6262,7 +6304,7 @@ public final class Client extends GameShell {
                                 string_97 = packet_71.method448();
                                 i_54 = 0;
                                 if (i_42 == 1)
-                                    i_54 = packet_71.method444();
+                                    i_54 = packet_71.readInt();
 
                                 config34_96.intArray62[i_45] = i_42;
                                 config34_96.intArray63[i_45] = i_54;
@@ -6308,7 +6350,7 @@ public final class Client extends GameShell {
 
                 boolean bool_48;
                 if (staticInt189 == 14) {
-                    bool_48 = staticPacket3.method439() == 1;
+                    bool_48 = staticPacket3.readUByte() == 1;
                     if (bool_48) {
                         JavaxSoundSystemProvider.staticLong1 = StaticClass27.synchronizedMethod7() - staticPacket3.method445();
                         ExchangeOfferComparator2.staticClass13_1 = new Class13(staticPacket3, true);
@@ -6320,13 +6362,14 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // camera packet?
                 if (staticInt189 == 11) {
                     staticBool45 = true;
-                    SoundBank.staticInt74 = staticPacket3.method439();
-                    ItemContainer.staticInt160 = staticPacket3.method439();
+                    SoundBank.staticInt74 = staticPacket3.readUByte();
+                    ItemContainer.staticInt160 = staticPacket3.readUByte();
                     ExchangeOfferComparator1.staticInt120 = staticPacket3.method441();
-                    WMEnum4.staticInt136 = staticPacket3.method439();
-                    FriendLogin.staticInt159 = staticPacket3.method439();
+                    WMEnum4.staticInt136 = staticPacket3.readUByte();
+                    FriendLogin.staticInt159 = staticPacket3.readUByte();
                     if (FriendLogin.staticInt159 >= 100) {
                         StaticClass44.staticInt135 = SoundBank.staticInt74 * 128 + 64;
                         ChatLog.staticInt69 = ItemContainer.staticInt160 * 128 + 64;
@@ -6416,13 +6459,14 @@ public final class Client extends GameShell {
 
                 if (staticInt189 == 152) {
                     i_33 = staticPacket3.method441();
-                    i_4 = staticPacket3.method439();
+                    i_4 = staticPacket3.readUByte();
                     i_35 = staticPacket3.method441();
                     staticMethod266(i_33, i_4, i_35);
                     staticInt189 = -1;
                     return true;
                 }
 
+                // CS2 script
                 if (staticInt189 == 144) {
                     string_3 = staticPacket3.method448();
                     Object[] arr_105 = new Object[string_3.length() + 1];
@@ -6431,9 +6475,9 @@ public final class Client extends GameShell {
                         if (string_3.charAt(i_35) == 115)
                             arr_105[i_35 + 1] = staticPacket3.method448();
                         else
-                            arr_105[i_35 + 1] = new Integer(staticPacket3.method444());
+                            arr_105[i_35 + 1] = new Integer(staticPacket3.readInt());
 
-                    arr_105[0] = new Integer(staticPacket3.method444());
+                    arr_105[0] = new Integer(staticPacket3.readInt());
                     RuneScript runescript_92 = new RuneScript();
                     runescript_92.objectArray1 = arr_105;
                     StaticClass15.staticMethod79(runescript_92);
@@ -6442,7 +6486,7 @@ public final class Client extends GameShell {
                 }
 
                 if (staticInt189 == 197) {
-                    staticInt170 = staticPacket3.method439();
+                    staticInt170 = staticPacket3.readUByte();
                     if (staticInt170 == 1)
                         staticInt171 = staticPacket3.method441();
 
@@ -6475,7 +6519,7 @@ public final class Client extends GameShell {
                         staticInt170 = 2;
                         staticInt214 = staticPacket3.method441();
                         staticInt188 = staticPacket3.method441();
-                        staticInt175 = staticPacket3.method439();
+                        staticInt175 = staticPacket3.readUByte();
                     }
 
                     if (staticInt170 == 10)
@@ -6487,7 +6531,7 @@ public final class Client extends GameShell {
 
                 Widget widget_34;
                 if (staticInt189 == 2) {
-                    i_33 = staticPacket3.method444();
+                    i_33 = staticPacket3.readInt();
                     widget_34 = Widget.staticMethod381(i_33);
 
                     for (i_35 = 0; i_35 < widget_34.intArray57.length; i_35++) {
@@ -6501,20 +6545,23 @@ public final class Client extends GameShell {
                 }
 
                 if (staticInt189 == 9) {
-                    i_33 = staticPacket3.method441();
-                    i_4 = staticPacket3.method486();
-                    StaticClass44.staticIntArray66[i_33] = i_4;
-                    if (StaticClass44.staticIntArray68[i_33] != i_4)
-                        StaticClass44.staticIntArray68[i_33] = i_4;
+                    int id = staticPacket3.method441();
+                    int state = staticPacket3.readIntME();
+                    StaticClass44.staticIntArray66[id] = state;
+                    if (StaticClass44.staticIntArray68[id] != state) {
+                        StaticClass44.staticIntArray68[id] = state;
+                    }
 
-                    staticMethod348(i_33);
-                    staticIntArray103[staticInt257++ & 0x1f] = i_33;
+                    System.out.println(String.format("setVarp(%d, %d)", id, state));
+
+                    staticMethod348(id);
+                    staticIntArray103[staticInt257++ & 0x1f] = id;
                     staticInt189 = -1;
                     return true;
                 }
 
                 if (staticInt189 == 65) {
-                    i_33 = staticPacket3.method444();
+                    i_33 = staticPacket3.readInt();
                     i_4 = staticPacket3.method441();
                     if (i_33 < -70000)
                         i_4 += 32768;
@@ -6529,9 +6576,9 @@ public final class Client extends GameShell {
                         i_42 = staticPacket3.method441();
                         i_47 = 0;
                         if (i_42 != 0) {
-                            i_47 = staticPacket3.method439();
+                            i_47 = staticPacket3.readUByte();
                             if (i_47 == 255)
-                                i_47 = staticPacket3.method444();
+                                i_47 = staticPacket3.readInt();
                         }
 
                         if (widget_5 != null && i_45 >= 0 && i_45 < widget_5.intArray57.length) {
@@ -6550,8 +6597,11 @@ public final class Client extends GameShell {
                 }
 
                 if (staticInt189 == 16) {
-                    i_33 = staticPacket3.method444();
-                    i_4 = staticPacket3.method486();
+                    i_33 = staticPacket3.readInt();
+                    i_4 = staticPacket3.readIntME();
+
+                    System.out.println(String.format("setInterfaceSets(%d, %d, %d, %d)", i_33 >> 16, i_33 & 0xFF, i_4 >> 16, i_4 & 0xFF));
+
                     NodeSub1 nodesub1_68 = (NodeSub1) staticHashTable7.get(i_33);
                     nodesub1_75 = (NodeSub1) staticHashTable7.get(i_4);
                     if (nodesub1_75 != null)
@@ -6587,18 +6637,18 @@ public final class Client extends GameShell {
                 boolean bool_84;
                 if (staticInt189 == 18) {
                     while (staticPacket3.off < staticInt287) {
-                        bool_48 = staticPacket3.method439() == 1;
+                        bool_48 = staticPacket3.readUByte() == 1;
                         string_38 = staticPacket3.method448();
                         string_36 = staticPacket3.method448();
                         i_45 = staticPacket3.method441();
-                        i_42 = staticPacket3.method439();
-                        i_47 = staticPacket3.method439();
+                        i_42 = staticPacket3.readUByte();
+                        i_47 = staticPacket3.readUByte();
                         boolean bool_85 = (i_47 & 0x2) != 0;
                         bool_57 = (i_47 & 0x1) != 0;
                         if (i_45 > 0) {
                             staticPacket3.method448();
-                            staticPacket3.method439();
-                            staticPacket3.method444();
+                            staticPacket3.readUByte();
+                            staticPacket3.readInt();
                         }
 
                         staticPacket3.method448();
@@ -6698,8 +6748,8 @@ public final class Client extends GameShell {
                 long long_9;
                 long long_70;
                 if (staticInt189 == 129) {
-                    i_33 = staticPacket3.method444();
-                    i_4 = staticPacket3.method444();
+                    i_33 = staticPacket3.readInt();
+                    i_4 = staticPacket3.readInt();
                     i_45 = 0;
                     if (StaticClass61.staticGarbageCollectorMXBean1 == null || !StaticClass61.staticGarbageCollectorMXBean1.isValid())
                         try {
@@ -6740,6 +6790,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // update uid
                 if (staticInt189 == 203) {
                     staticPacket3.off += 28;
                     if (staticPacket3.method463()) {
@@ -6760,14 +6811,14 @@ public final class Client extends GameShell {
                 }
 
                 if (staticInt189 == 186) {
-                    WorldMapDecor.staticClass7_1 = Class7.staticMethod201(staticPacket3.method439());
+                    WorldMapDecor.staticClass7_1 = Class7.staticMethod201(staticPacket3.readUByte());
                     staticInt189 = -1;
                     return true;
                 }
 
                 if (staticInt189 == 153) {
-                    i_33 = staticPacket3.method477();
-                    i_4 = staticPacket3.method486();
+                    i_33 = staticPacket3.readUShortA();
+                    i_4 = staticPacket3.readIntME();
                     widget_5 = Widget.staticMethod381(i_4);
                     if (widget_5.int423 != 2 || widget_5.int409 != i_33) {
                         widget_5.int423 = 2;
@@ -6809,7 +6860,7 @@ public final class Client extends GameShell {
                 }
 
                 if (staticInt189 == 141) {
-                    i_33 = staticPacket3.method444();
+                    i_33 = staticPacket3.readInt();
                     NodeSub1 nodesub1_62 = (NodeSub1) staticHashTable7.get(i_33);
                     if (nodesub1_62 != null)
                         staticMethod350(nodesub1_62, true);
@@ -6823,6 +6874,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // varp reset
                 if (staticInt189 == 182) {
                     for (i_33 = 0; i_33 < StaticClass18.staticInt121; i_33++) {
                         Varp varp_59 = Varp.staticMethod424(i_33);
@@ -6849,20 +6901,20 @@ public final class Client extends GameShell {
                     for (i_33 = 0; i_33 < 2048; i_33++)
                         staticPlayerArray1[i_33] = null;
 
-                    StaticClass10.staticMethod52(staticPacket3);
+                    StaticClass10.initGPI(staticPacket3);
                     staticInt189 = -1;
                     return true;
                 }
 
                 if (staticInt189 == 133) {
-                    staticInt296 = staticPacket3.method439();
+                    staticInt296 = staticPacket3.readUByte();
                     staticInt189 = -1;
                     return true;
                 }
 
                 if (staticInt189 == 55) {
                     bool_48 = staticPacket3.method468() == 1;
-                    i_4 = staticPacket3.method487();
+                    i_4 = staticPacket3.readIntIM();
                     widget_5 = Widget.staticMethod381(i_4);
                     if (widget_5.hidden != bool_48) {
                         widget_5.hidden = bool_48;
@@ -6890,9 +6942,9 @@ public final class Client extends GameShell {
 
                     NodeSub1 nodesub1_69;
                     for (; i_35-- > 0; nodesub1_69.bool24 = true) {
-                        i_45 = staticPacket3.method444();
+                        i_45 = staticPacket3.readInt();
                         i_42 = staticPacket3.method441();
-                        i_47 = staticPacket3.method439();
+                        i_47 = staticPacket3.readUByte();
                         nodesub1_69 = (NodeSub1) staticHashTable7.get(i_45);
                         if (nodesub1_69 != null && i_42 != nodesub1_69.int317) {
                             staticMethod350(nodesub1_69, true);
@@ -6934,10 +6986,10 @@ public final class Client extends GameShell {
                     staticHashTable6 = new HashTable(512);
 
                     while (staticPacket3.off < i_33) {
-                        i_45 = staticPacket3.method444();
+                        i_45 = staticPacket3.readInt();
                         i_42 = staticPacket3.method441();
                         i_47 = staticPacket3.method441();
-                        i_52 = staticPacket3.method444();
+                        i_52 = staticPacket3.readInt();
 
                         for (i_54 = i_42; i_54 <= i_47; i_54++) {
                             long_70 = ((long) i_45 << 32) + i_54;
@@ -6953,7 +7005,7 @@ public final class Client extends GameShell {
                     World world_44 = new World();
                     world_44.string8 = staticPacket3.method448();
                     world_44.int94 = staticPacket3.method441();
-                    i_4 = staticPacket3.method444();
+                    i_4 = staticPacket3.readInt();
                     world_44.int95 = i_4;
                     staticMethod253(45);
                     StaticClass54.staticConnection4.shutdown();
@@ -6964,7 +7016,7 @@ public final class Client extends GameShell {
                 }
 
                 if (staticInt189 == 89) {
-                    i_33 = staticPacket3.method444();
+                    i_33 = staticPacket3.readInt();
                     i_4 = staticPacket3.method441();
                     if (i_33 < -70000)
                         i_4 += 32768;
@@ -6990,10 +7042,10 @@ public final class Client extends GameShell {
                     i_45 = staticPacket3.method441();
 
                     for (i_42 = 0; i_42 < i_45; i_42++) {
-                        i_47 = staticPacket3.method476();
-                        i_52 = staticPacket3.method439();
+                        i_47 = staticPacket3.readUShortLE();
+                        i_52 = staticPacket3.readUByte();
                         if (i_52 == 255)
-                            i_52 = staticPacket3.method444();
+                            i_52 = staticPacket3.readInt();
 
                         if (widget_5 != null && i_42 < widget_5.intArray57.length) {
                             widget_5.intArray57[i_42] = i_47;
@@ -7051,7 +7103,7 @@ public final class Client extends GameShell {
 
                     staticString314 = string_36;
                     WM2.staticByte1 = staticPacket3.method440();
-                    i_47 = staticPacket3.method439();
+                    i_47 = staticPacket3.readUByte();
                     if (i_47 == 255) {
                         staticInt189 = -1;
                         return true;
@@ -7096,9 +7148,11 @@ public final class Client extends GameShell {
                 }
 
                 String string_41;
+
+                // server message
                 if (staticInt189 == 100) {
                     i_33 = staticPacket3.method453();
-                    bool_49 = staticPacket3.method439() == 1;
+                    bool_49 = staticPacket3.readUByte() == 1;
                     string_36 = "";
                     bool_51 = false;
                     if (bool_49) {
@@ -7116,8 +7170,8 @@ public final class Client extends GameShell {
                 }
 
                 if (staticInt189 == 49) {
-                    i_33 = staticPacket3.method476();
-                    i_4 = staticPacket3.method486();
+                    i_33 = staticPacket3.readUShortLE();
+                    i_4 = staticPacket3.readIntME();
                     i_35 = i_33 >> 10 & 0x1f;
                     i_45 = i_33 >> 5 & 0x1f;
                     i_42 = i_33 & 0x1f;
@@ -7140,7 +7194,7 @@ public final class Client extends GameShell {
                     long_40 = staticPacket3.method445();
                     long_43 = staticPacket3.method441();
                     long_50 = staticPacket3.method443();
-                    Class6 class6_10 = (Class6) StaticClass26.staticMethod155(Class6.staticMethod175(), staticPacket3.method439());
+                    Class6 class6_10 = (Class6) StaticClass26.staticMethod155(Class6.staticMethod175(), staticPacket3.readUByte());
                     long_70 = (long_43 << 32) + long_50;
                     bool_84 = false;
 
@@ -7169,19 +7223,21 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // player updating
                 if (staticInt189 == 83) {
                     StaticClass10.staticMethod53(staticPacket3, staticInt287);
                     staticInt189 = -1;
                     return true;
                 }
 
+                // camera packet
                 if (staticInt189 == 180) {
                     staticBool45 = true;
-                    JavaxSoundSystemProvider.staticInt10 = staticPacket3.method439();
-                    DataClass1.staticInt11 = staticPacket3.method439();
+                    JavaxSoundSystemProvider.staticInt10 = staticPacket3.readUByte();
+                    DataClass1.staticInt11 = staticPacket3.readUByte();
                     StaticClass21.staticInt127 = staticPacket3.method441();
-                    StaticClass18.staticInt122 = staticPacket3.method439();
-                    WorldMapRegionStorage.staticInt8 = staticPacket3.method439();
+                    StaticClass18.staticInt122 = staticPacket3.readUByte();
+                    WorldMapRegionStorage.staticInt8 = staticPacket3.readUByte();
                     if (WorldMapRegionStorage.staticInt8 >= 100) {
                         i_33 = 64 + JavaxSoundSystemProvider.staticInt10 * 128;
                         i_4 = DataClass1.staticInt11 * 128 + 64;
@@ -7207,7 +7263,7 @@ public final class Client extends GameShell {
                     string_3 = staticPacket3.method448();
                     long_40 = staticPacket3.method441();
                     long_43 = staticPacket3.method443();
-                    Class6 class6_46 = (Class6) StaticClass26.staticMethod155(Class6.staticMethod175(), staticPacket3.method439());
+                    Class6 class6_46 = (Class6) StaticClass26.staticMethod155(Class6.staticMethod175(), staticPacket3.readUByte());
                     long_9 = long_43 + (long_40 << 32);
                     boolean bool_60 = false;
 
@@ -7242,13 +7298,15 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // dns lookup
                 if (staticInt189 == 193) {
-                    i_33 = staticPacket3.method485();
+                    i_33 = staticPacket3.readIntLE();
                     WM1.staticTask1 = staticTaskManager1.submitDNS(i_33);
                     staticInt189 = -1;
                     return true;
                 }
 
+                // get params
                 if (staticInt189 == 128) {
                     string_3 = staticPacket3.method448();
                     WorldMap.staticString25 = string_3;
@@ -7283,6 +7341,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // TODO find packet
                 if (staticInt189 == 146) {
                     string_3 = staticPacket3.method448();
                     string_38 = TypeFace.staticMethod495(StaticClass51.staticMethod215(StaticClass50.staticMethod207(staticPacket3)));
@@ -7291,23 +7350,25 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // TODO find packet
                 if (staticInt189 == 64) {
                     i_33 = staticPacket3.method441();
-                    i_4 = staticPacket3.method476();
-                    i_35 = staticPacket3.method485();
+                    i_4 = staticPacket3.readUShortLE();
+                    i_35 = staticPacket3.readIntLE();
                     widget_6 = Widget.staticMethod381(i_35);
                     widget_6.int433 = (i_4 << 16) + i_33;
                     staticInt189 = -1;
                     return true;
                 }
 
+                // TODO ground item
                 if (staticInt189 == 20) {
-                    i_33 = staticPacket3.method485();
-                    i_4 = staticPacket3.method476();
+                    i_33 = staticPacket3.readIntLE();
+                    i_4 = staticPacket3.readUShortLE();
                     if (i_4 == 65535)
                         i_4 = -1;
 
-                    i_35 = staticPacket3.method485();
+                    i_35 = staticPacket3.readIntLE();
                     widget_6 = Widget.staticMethod381(i_33);
                     ObjType objtype_7;
                     if (!widget_6.bool34) {
@@ -7351,6 +7412,7 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // system update
                 if (staticInt189 == 174) {
                     staticInt201 = staticPacket3.method441() * 30;
                     staticInt264 = staticInt256;
@@ -7358,9 +7420,10 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // TODO find
                 if (staticInt189 == 244) {
-                    i_33 = staticPacket3.method476();
-                    i_4 = staticPacket3.method485();
+                    i_33 = staticPacket3.readUShortLE();
+                    i_4 = staticPacket3.readIntLE();
                     widget_5 = Widget.staticMethod381(i_4);
                     if (widget_5.int423 != 1 || widget_5.int409 != i_33) {
                         widget_5.int423 = 1;
@@ -7372,8 +7435,9 @@ public final class Client extends GameShell {
                     return true;
                 }
 
+                // TODO find
                 if (staticInt189 == 120) {
-                    i_33 = staticPacket3.method487();
+                    i_33 = staticPacket3.readIntIM();
                     widget_34 = Widget.staticMethod381(i_33);
                     widget_34.int423 = 3;
                     widget_34.int409 = BufferWrapper.staticPlayer1.playerDef1.method304();
@@ -7387,7 +7451,7 @@ public final class Client extends GameShell {
                     Actor.staticInt318 = staticPacket3.method469();
 
                     while (staticPacket3.off < staticInt287) {
-                        staticInt189 = staticPacket3.method439();
+                        staticInt189 = staticPacket3.readUByte();
                         staticMethod299();
                     }
 
@@ -7444,7 +7508,7 @@ public final class Client extends GameShell {
             int i_5;
             int i_33;
             if (staticInt189 == 40) {
-                i_30 = staticPacket3.method439();
+                i_30 = staticPacket3.readUByte();
                 i_2 = (i_30 >> 4 & 0x7) + WorldMapTile.staticInt5;
                 i_31 = (i_30 & 0x7) + Actor.staticInt318;
                 i_32 = staticPacket3.method441();
@@ -7464,11 +7528,11 @@ public final class Client extends GameShell {
                 }
 
             } else if (staticInt189 == 143) {
-                i_30 = staticPacket3.method439();
+                i_30 = staticPacket3.readUByte();
                 i_2 = (i_30 >> 4 & 0x7) + WorldMapTile.staticInt5;
                 i_31 = Actor.staticInt318 + (i_30 & 0x7);
                 i_32 = staticPacket3.method441();
-                i_5 = staticPacket3.method439();
+                i_5 = staticPacket3.readUByte();
                 i_33 = staticPacket3.method441();
                 if (i_2 >= 0 && i_31 >= 0 && i_2 < 104 && i_31 < 104) {
                     i_2 = i_2 * 128 + 64;
@@ -7498,19 +7562,19 @@ public final class Client extends GameShell {
                     int i_12;
                     int i_13;
                     if (staticInt189 == 44) {
-                        i_30 = staticPacket3.method439();
+                        i_30 = staticPacket3.readUByte();
                         i_2 = (i_30 >> 4 & 0x7) + WorldMapTile.staticInt5;
                         i_31 = Actor.staticInt318 + (i_30 & 0x7);
                         i_32 = i_2 + staticPacket3.method440();
                         i_5 = i_31 + staticPacket3.method440();
-                        i_33 = staticPacket3.method442();
+                        i_33 = staticPacket3.readShort();
                         i_7 = staticPacket3.method441();
-                        i_8 = staticPacket3.method439() * 4;
-                        i_9 = staticPacket3.method439() * 4;
+                        i_8 = staticPacket3.readUByte() * 4;
+                        i_9 = staticPacket3.readUByte() * 4;
                         i_10 = staticPacket3.method441();
                         i_11 = staticPacket3.method441();
-                        i_12 = staticPacket3.method439();
-                        i_13 = staticPacket3.method439();
+                        i_12 = staticPacket3.readUByte();
+                        i_13 = staticPacket3.readUByte();
                         if (i_2 >= 0 && i_31 >= 0 && i_2 < 104 && i_31 < 104 && i_32 >= 0 && i_5 >= 0 && i_32 < 104 && i_5 < 104 && i_7 != 65535) {
                             i_2 = i_2 * 128 + 64;
                             i_31 = 64 + i_31 * 128;
@@ -7524,16 +7588,16 @@ public final class Client extends GameShell {
                     } else {
                         if (staticInt189 == 163) {
                             byte b_1 = staticPacket3.method471();
-                            i_2 = staticPacket3.method478();
+                            i_2 = staticPacket3.readUShortLEA();
                             byte b_3 = staticPacket3.method471();
                             byte b_4 = staticPacket3.method471();
-                            i_5 = staticPacket3.method477();
+                            i_5 = staticPacket3.readUShortA();
                             byte b_6 = staticPacket3.method440();
                             i_7 = staticPacket3.method468();
                             i_8 = WorldMapTile.staticInt5 + (i_7 >> 4 & 0x7);
                             i_9 = Actor.staticInt318 + (i_7 & 0x7);
-                            i_10 = staticPacket3.method477();
-                            i_11 = staticPacket3.method477();
+                            i_10 = staticPacket3.readUShortA();
+                            i_11 = staticPacket3.readUShortA();
                             i_12 = staticPacket3.method469();
                             i_13 = i_12 >> 2;
                             int i_14 = i_12 & 0x3;
@@ -7598,7 +7662,7 @@ public final class Client extends GameShell {
                             i_30 = staticPacket3.method468();
                             i_2 = (i_30 >> 4 & 0x7) + WorldMapTile.staticInt5;
                             i_31 = Actor.staticInt318 + (i_30 & 0x7);
-                            i_32 = staticPacket3.method478();
+                            i_32 = staticPacket3.readUShortLEA();
                             i_5 = staticPacket3.method469();
                             i_33 = i_5 >> 2;
                             i_7 = i_5 & 0x3;
@@ -7608,14 +7672,14 @@ public final class Client extends GameShell {
 
                         } else {
                             if (staticInt189 == 57) {
-                                i_30 = staticPacket3.method439();
+                                i_30 = staticPacket3.readUByte();
                                 i_2 = (i_30 >> 4 & 0x7) + WorldMapTile.staticInt5;
                                 i_31 = (i_30 & 0x7) + Actor.staticInt318;
                                 i_32 = staticPacket3.method441();
-                                i_5 = staticPacket3.method439();
+                                i_5 = staticPacket3.readUByte();
                                 i_33 = i_5 >> 4 & 0xf;
                                 i_7 = i_5 & 0x7;
-                                i_8 = staticPacket3.method439();
+                                i_8 = staticPacket3.readUByte();
                                 if (i_2 >= 0 && i_31 >= 0 && i_2 < 104 && i_31 < 104) {
                                     i_9 = i_33 + 1;
                                     if (BufferWrapper.staticPlayer1.intArray103[0] >= i_2 - i_9 && BufferWrapper.staticPlayer1.intArray103[0] <= i_2 + i_9 && BufferWrapper.staticPlayer1.intArray104[0] >= i_31 - i_9 && BufferWrapper.staticPlayer1.intArray104[0] <= i_9 + i_31 && staticInt267 != 0 && i_7 > 0 && staticInt285 < 50) {
@@ -7631,7 +7695,7 @@ public final class Client extends GameShell {
 
                             if (staticInt189 != 23) {
                                 if (staticInt189 == 187) {
-                                    i_30 = staticPacket3.method477();
+                                    i_30 = staticPacket3.readUShortA();
                                     i_2 = staticPacket3.method441();
                                     i_31 = staticPacket3.method467();
                                     i_32 = WorldMapTile.staticInt5 + (i_31 >> 4 & 0x7);
@@ -7652,7 +7716,7 @@ public final class Client extends GameShell {
                                 i_30 = staticPacket3.method467();
                                 i_2 = (i_30 >> 4 & 0x7) + WorldMapTile.staticInt5;
                                 i_31 = (i_30 & 0x7) + Actor.staticInt318;
-                                i_32 = staticPacket3.method476();
+                                i_32 = staticPacket3.readUShortLE();
                                 i_5 = staticPacket3.method468();
                                 i_33 = i_5 >> 2;
                                 i_7 = i_5 & 0x3;
@@ -7928,11 +7992,14 @@ public final class Client extends GameShell {
         for (i_2 = 0; i_2 < staticInt187; i_2++) {
             i_3 = staticIntArray81[i_2];
             Npc npc_4 = staticNpcArray1[i_3];
-            int i_5 = staticPacket3.method439();
+            int i_5 = staticPacket3.readUByte();
             int i_6;
+
+            // TODO npc masks
+
             if ((i_5 & 0x4) != 0) {
-                npc_4.int640 = staticPacket3.method477();
-                i_6 = staticPacket3.method485();
+                npc_4.int640 = staticPacket3.readUShortA();
+                i_6 = staticPacket3.readIntLE();
                 npc_4.int613 = i_6 >> 16;
                 npc_4.int630 = (i_6 & 0xffff) + staticInt166;
                 npc_4.int631 = 0;
@@ -7945,7 +8012,7 @@ public final class Client extends GameShell {
             }
 
             if ((i_5 & 0x1) != 0) {
-                npc_4.npcType1 = NpcType.staticMethod413(staticPacket3.method478());
+                npc_4.npcType1 = NpcType.staticMethod413(staticPacket3.readUShortLEA());
                 npc_4.tiles = npc_4.npcType1.name;
                 npc_4.ubn = npc_4.npcType1.int544;
                 npc_4.walk = npc_4.npcType1.idle;
@@ -7988,8 +8055,8 @@ public final class Client extends GameShell {
 
             int i_9;
             if ((i_5 & 0x20) != 0) {
-                i_6 = staticPacket3.method476();
-                i_7 = staticPacket3.method478();
+                i_6 = staticPacket3.readUShortLE();
+                i_7 = staticPacket3.readUShortLEA();
                 i_8 = npc_4.int626 - (i_6 - DataClass10.staticInt111 - DataClass10.staticInt111) * 64;
                 i_9 = npc_4.int609 - (i_7 - Class4.staticInt53 - Class4.staticInt53) * 64;
                 if (i_8 != 0 || i_9 != 0)
@@ -7997,7 +8064,7 @@ public final class Client extends GameShell {
             }
 
             if ((i_5 & 0x10) != 0) {
-                npc_4.int620 = staticPacket3.method478();
+                npc_4.int620 = staticPacket3.readUShortLEA();
                 if (npc_4.int620 == 65535)
                     npc_4.int620 = -1;
             }
@@ -8471,6 +8538,9 @@ public final class Client extends GameShell {
         if (i_2 == 28) {
             staticPacket1.writeOpcode(221);
             staticPacket1.writeInt(i_1);
+
+            System.out.println(String.format("buttonClick: interface=%d button=%d", i_1 << 16, i_1 & 0xFFFF));
+
             widget_13 = Widget.staticMethod381(i_1);
             if (widget_13.intArrayArray12 != null && widget_13.intArrayArray12[0][0] == 5) {
                 i_10 = widget_13.intArrayArray12[0][1];

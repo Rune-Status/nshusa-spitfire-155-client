@@ -106,10 +106,10 @@ public class StaticClass45 {
 
                             if (staticJs5DownloadRequest1 == null) {
                                 staticBuffer4.off = 0;
-                                i_8 = staticBuffer4.method439();
+                                i_8 = staticBuffer4.readUByte();
                                 i_9 = staticBuffer4.method441();
-                                int i_10 = staticBuffer4.method439();
-                                i_11 = staticBuffer4.method444();
+                                int i_10 = staticBuffer4.readUByte();
+                                i_11 = staticBuffer4.readInt();
                                 long long_12 = (i_8 << 16) + i_9;
                                 Js5DownloadRequest js5downloadrequest_14 = (Js5DownloadRequest) staticHashTable2.get(long_12);
                                 staticBool22 = true;
@@ -158,8 +158,8 @@ public class StaticClass45 {
                                         Js5IndexImpl js5indeximpl_21 = staticJs5IndexImplArray1[i_9];
                                         if (js5indeximpl_21 != null) {
                                             DataClass9.staticBuffer3.off = i_9 * 8 + 5;
-                                            i_11 = DataClass9.staticBuffer3.method444();
-                                            int i_22 = DataClass9.staticBuffer3.method444();
+                                            i_11 = DataClass9.staticBuffer3.readInt();
+                                            int i_22 = DataClass9.staticBuffer3.readInt();
                                             js5indeximpl_21.method507(i_11, i_22);
                                         }
                                     }

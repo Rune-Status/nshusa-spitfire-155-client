@@ -5,13 +5,17 @@ public class SoundEffect {
     int int93;
 
     public static SoundEffect staticMethod44(Js5Index js5index_0, int i_1, int i_2) {
+        // not sure what format this is in
         byte[] bytes_3 = js5index_0.getFile(i_1, i_2);
+
+        System.out.println("playing sound: " + i_1 + "_" + i_2);
+
         return bytes_3 == null ? null : new SoundEffect(new Buffer(bytes_3));
     }
 
     SoundEffect(Buffer buffer_1) {
         for (int i_2 = 0; i_2 < 10; i_2++) {
-            int i_3 = buffer_1.method439();
+            int i_3 = buffer_1.readUByte();
             if (i_3 != 0) {
                 --buffer_1.off;
                 audioInstrumentArray1[i_2] = new AudioInstrument();

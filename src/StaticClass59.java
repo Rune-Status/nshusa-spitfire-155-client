@@ -179,7 +179,7 @@ public class StaticClass59 {
         buffer_2.off = bytes_0.length - 7 - ExchangeOfferComparator1.staticInt119 * 8;
         staticInt151 = buffer_2.method441();
         StaticClass24.staticInt130 = buffer_2.method441();
-        int i_3 = (buffer_2.method439() & 0xff) + 1;
+        int i_3 = (buffer_2.readUByte() & 0xff) + 1;
 
         int i_4;
         for (i_4 = 0; i_4 < ExchangeOfferComparator1.staticInt119; i_4++)
@@ -211,7 +211,7 @@ public class StaticClass59 {
             int i_7 = i_5 * i_6;
             byte[] bytes_8 = new byte[i_7];
             Mus5Sub4.staticByteArrayArray6[i_4] = bytes_8;
-            int i_9 = buffer_2.method439();
+            int i_9 = buffer_2.readUByte();
             int i_10;
             if (i_9 == 0)
                 for (i_10 = 0; i_10 < i_7; i_10++)

@@ -18,23 +18,23 @@ public class ClientPreferences {
 
     ClientPreferences(Buffer buffer_1) {
         if (buffer_1 != null && buffer_1.buf != null) {
-            int i_2 = buffer_1.method439();
+            int i_2 = buffer_1.readUByte();
             if (i_2 >= 0 && i_2 <= 6) {
-                if (buffer_1.method439() == 1)
+                if (buffer_1.readUByte() == 1)
                     bool11 = true;
 
                 if (i_2 > 1)
-                    bool10 = buffer_1.method439() == 1;
+                    bool10 = buffer_1.readUByte() == 1;
 
                 if (i_2 > 3)
-                    int104 = buffer_1.method439();
+                    int104 = buffer_1.readUByte();
 
                 if (i_2 > 2) {
-                    int i_3 = buffer_1.method439();
+                    int i_3 = buffer_1.readUByte();
 
                     for (int i_4 = 0; i_4 < i_3; i_4++) {
-                        int i_5 = buffer_1.method444();
-                        int i_6 = buffer_1.method444();
+                        int i_5 = buffer_1.readInt();
+                        int i_6 = buffer_1.readInt();
                         linkedHashMap1.put(Integer.valueOf(i_5), Integer.valueOf(i_6));
                     }
                 }

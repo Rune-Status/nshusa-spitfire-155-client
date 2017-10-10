@@ -53,7 +53,7 @@ public class MapElementType extends Cacheable {
 
     void decode(Buffer buffer_1) {
         while (true) {
-            int i_3 = buffer_1.method439();
+            int i_3 = buffer_1.readUByte();
             if (i_3 == 0)
                 return;
 
@@ -73,35 +73,35 @@ public class MapElementType extends Cacheable {
         else if (i_2 == 5)
             buffer_1.method443();
         else if (i_2 == 6)
-            fontsize = buffer_1.method439();
+            fontsize = buffer_1.readUByte();
         else {
             int i_4;
             if (i_2 == 7) {
-                i_4 = buffer_1.method439();
+                i_4 = buffer_1.readUByte();
                 if ((i_4 & 0x1) == 0)
                     ;
 
                 if ((i_4 & 0x2) == 2)
                     ;
             } else if (i_2 == 8)
-                buffer_1.method439();
+                buffer_1.readUByte();
             else if (i_2 >= 10 && i_2 <= 14)
                 stupidoptions[i_2 - 10] = buffer_1.method448();
             else if (i_2 == 15) {
-                i_4 = buffer_1.method439();
+                i_4 = buffer_1.readUByte();
                 unused2 = new int[i_4 * 2];
 
                 int i_5;
                 for (i_5 = 0; i_5 < i_4 * 2; i_5++)
-                    unused2[i_5] = buffer_1.method442();
+                    unused2[i_5] = buffer_1.readShort();
 
-                buffer_1.method444();
-                i_5 = buffer_1.method439();
+                buffer_1.readInt();
+                i_5 = buffer_1.readUByte();
                 unused3 = new int[i_5];
 
                 int i_6;
                 for (i_6 = 0; i_6 < unused3.length; i_6++)
-                    unused3[i_6] = buffer_1.method444();
+                    unused3[i_6] = buffer_1.readInt();
 
                 unused4 = new byte[i_4];
 
@@ -115,25 +115,25 @@ public class MapElementType extends Cacheable {
                 else if (i_2 == 19)
                     int548 = buffer_1.method441();
                 else if (i_2 == 21)
-                    buffer_1.method444();
+                    buffer_1.readInt();
                 else if (i_2 == 22)
-                    buffer_1.method444();
+                    buffer_1.readInt();
                 else if (i_2 == 23) {
-                    buffer_1.method439();
-                    buffer_1.method439();
-                    buffer_1.method439();
+                    buffer_1.readUByte();
+                    buffer_1.readUByte();
+                    buffer_1.readUByte();
                 } else if (i_2 == 24) {
-                    buffer_1.method442();
-                    buffer_1.method442();
+                    buffer_1.readShort();
+                    buffer_1.readShort();
                 } else if (i_2 == 25)
                     buffer_1.method455();
                 else if (i_2 == 28)
-                    buffer_1.method439();
+                    buffer_1.readUByte();
                 else if (i_2 == 29) {
                     WMUselessEnum1[] arr_7 = new WMUselessEnum1[] { WMUselessEnum1.staticWMUselessEnum1_3, WMUselessEnum1.staticWMUselessEnum1_1, WMUselessEnum1.staticWMUselessEnum1_2 };
-                    wMUselessEnum1_1 = (WMUselessEnum1) StaticClass26.staticMethod155(arr_7, buffer_1.method439());
+                    wMUselessEnum1_1 = (WMUselessEnum1) StaticClass26.staticMethod155(arr_7, buffer_1.readUByte());
                 } else if (i_2 == 30)
-                    wMUselessEnum2_1 = (WMUselessEnum2) StaticClass26.staticMethod155(WMUselessEnum2.staticMethod199(), buffer_1.method439());
+                    wMUselessEnum2_1 = (WMUselessEnum2) StaticClass26.staticMethod155(WMUselessEnum2.staticMethod199(), buffer_1.readUByte());
         }
 
     }

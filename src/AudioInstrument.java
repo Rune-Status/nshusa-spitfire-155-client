@@ -243,7 +243,7 @@ public class AudioInstrument {
         audioEnvelope9.method144(buffer_1);
         audioEnvelope5 = new AudioEnvelope();
         audioEnvelope5.method144(buffer_1);
-        int i_2 = buffer_1.method439();
+        int i_2 = buffer_1.readUByte();
         if (i_2 != 0) {
             --buffer_1.off;
             audioEnvelope2 = new AudioEnvelope();
@@ -252,7 +252,7 @@ public class AudioInstrument {
             audioEnvelope3.method144(buffer_1);
         }
 
-        i_2 = buffer_1.method439();
+        i_2 = buffer_1.readUByte();
         if (i_2 != 0) {
             --buffer_1.off;
             audioEnvelope8 = new AudioEnvelope();
@@ -261,7 +261,7 @@ public class AudioInstrument {
             audioEnvelope1.method144(buffer_1);
         }
 
-        i_2 = buffer_1.method439();
+        i_2 = buffer_1.readUByte();
         if (i_2 != 0) {
             --buffer_1.off;
             audioEnvelope7 = new AudioEnvelope();

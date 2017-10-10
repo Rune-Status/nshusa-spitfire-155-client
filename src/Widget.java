@@ -285,14 +285,14 @@ public class Widget extends Node {
 
     void method495(Buffer buffer_1) {
         bool34 = false;
-        type = buffer_1.method439();
-        int395 = buffer_1.method439();
+        type = buffer_1.readUByte();
+        int395 = buffer_1.readUByte();
         int396 = buffer_1.method441();
-        int401 = buffer_1.method442();
-        int402 = buffer_1.method442();
+        int401 = buffer_1.readShort();
+        int402 = buffer_1.readShort();
         int403 = buffer_1.method441();
         int404 = buffer_1.method441();
-        int416 = buffer_1.method439();
+        int416 = buffer_1.readUByte();
         parentId = buffer_1.method441();
         if (parentId == 65535)
             parentId = -1;
@@ -303,19 +303,19 @@ public class Widget extends Node {
         if (int445 == 65535)
             int445 = -1;
 
-        int i_3 = buffer_1.method439();
+        int i_3 = buffer_1.readUByte();
         int i_4;
         if (i_3 > 0) {
             intArray58 = new int[i_3];
             intArray51 = new int[i_3];
 
             for (i_4 = 0; i_4 < i_3; i_4++) {
-                intArray58[i_4] = buffer_1.method439();
+                intArray58[i_4] = buffer_1.readUByte();
                 intArray51[i_4] = buffer_1.method441();
             }
         }
 
-        i_4 = buffer_1.method439();
+        i_4 = buffer_1.readUByte();
         int i_5;
         int i_6;
         int i_7;
@@ -336,46 +336,46 @@ public class Widget extends Node {
 
         if (type == 0) {
             int411 = buffer_1.method441();
-            hidden = buffer_1.method439() == 1;
+            hidden = buffer_1.readUByte() == 1;
         }
 
         if (type == 1) {
             buffer_1.method441();
-            buffer_1.method439();
+            buffer_1.readUByte();
         }
 
         if (type == 2) {
             intArray57 = new int[int404 * int403];
             intArray59 = new int[int403 * int404];
-            i_5 = buffer_1.method439();
+            i_5 = buffer_1.readUByte();
             if (i_5 == 1)
                 int418 |= 0x10000000;
 
-            i_6 = buffer_1.method439();
+            i_6 = buffer_1.readUByte();
             if (i_6 == 1)
                 int418 |= 0x40000000;
 
-            i_7 = buffer_1.method439();
+            i_7 = buffer_1.readUByte();
             if (i_7 == 1)
                 int418 |= ~0x7fffffff;
 
-            int i_8 = buffer_1.method439();
+            int i_8 = buffer_1.readUByte();
             if (i_8 == 1)
                 int418 |= 0x20000000;
 
-            int422 = buffer_1.method439();
-            int441 = buffer_1.method439();
+            int422 = buffer_1.readUByte();
+            int441 = buffer_1.readUByte();
             intArray52 = new int[20];
             intArray53 = new int[20];
             intArray54 = new int[20];
 
             int i_9;
             for (i_9 = 0; i_9 < 20; i_9++) {
-                int i_10 = buffer_1.method439();
+                int i_10 = buffer_1.readUByte();
                 if (i_10 == 1) {
-                    intArray52[i_9] = buffer_1.method442();
-                    intArray53[i_9] = buffer_1.method442();
-                    intArray54[i_9] = buffer_1.method444();
+                    intArray52[i_9] = buffer_1.readShort();
+                    intArray53[i_9] = buffer_1.readShort();
+                    intArray54[i_9] = buffer_1.readInt();
                 } else
                     intArray54[i_9] = -1;
             }
@@ -392,17 +392,17 @@ public class Widget extends Node {
         }
 
         if (type == 3)
-            bool32 = buffer_1.method439() == 1;
+            bool32 = buffer_1.readUByte() == 1;
 
         if (type == 4 || type == 1) {
-            int438 = buffer_1.method439();
-            int439 = buffer_1.method439();
-            int437 = buffer_1.method439();
+            int438 = buffer_1.readUByte();
+            int439 = buffer_1.readUByte();
+            int437 = buffer_1.readUByte();
             int435 = buffer_1.method441();
             if (int435 == 65535)
                 int435 = -1;
 
-            bool43 = buffer_1.method439() == 1;
+            bool43 = buffer_1.readUByte() == 1;
         }
 
         if (type == 4) {
@@ -411,17 +411,17 @@ public class Widget extends Node {
         }
 
         if (type == 1 || type == 3 || type == 4)
-            int393 = buffer_1.method444();
+            int393 = buffer_1.readInt();
 
         if (type == 3 || type == 4) {
-            int454 = buffer_1.method444();
-            int414 = buffer_1.method444();
-            int415 = buffer_1.method444();
+            int454 = buffer_1.readInt();
+            int414 = buffer_1.readInt();
+            int415 = buffer_1.readInt();
         }
 
         if (type == 5) {
-            int440 = buffer_1.method444();
-            int412 = buffer_1.method444();
+            int440 = buffer_1.readInt();
+            int412 = buffer_1.readInt();
         }
 
         if (type == 6) {
@@ -451,16 +451,16 @@ public class Widget extends Node {
         if (type == 7) {
             intArray57 = new int[int403 * int404];
             intArray59 = new int[int404 * int403];
-            int438 = buffer_1.method439();
+            int438 = buffer_1.readUByte();
             int435 = buffer_1.method441();
             if (int435 == 65535)
                 int435 = -1;
 
-            bool43 = buffer_1.method439() == 1;
-            int393 = buffer_1.method444();
-            int422 = buffer_1.method442();
-            int441 = buffer_1.method442();
-            i_5 = buffer_1.method439();
+            bool43 = buffer_1.readUByte() == 1;
+            int393 = buffer_1.readInt();
+            int422 = buffer_1.readShort();
+            int441 = buffer_1.readShort();
+            i_5 = buffer_1.readUByte();
             if (i_5 == 1)
                 int418 |= 0x40000000;
 
@@ -511,15 +511,15 @@ public class Widget extends Node {
     }
 
     void method496(Buffer buffer_1) {
-        buffer_1.method439();
+        buffer_1.readUByte();
         bool34 = true;
-        type = buffer_1.method439();
+        type = buffer_1.readUByte();
         int396 = buffer_1.method441();
-        int401 = buffer_1.method442();
-        int402 = buffer_1.method442();
+        int401 = buffer_1.readShort();
+        int402 = buffer_1.readShort();
         int403 = buffer_1.method441();
         if (type == 9)
-            int404 = buffer_1.method442();
+            int404 = buffer_1.readShort();
         else
             int404 = buffer_1.method441();
 
@@ -533,22 +533,22 @@ public class Widget extends Node {
         else
             parentId += int444 & ~0xffff;
 
-        hidden = buffer_1.method439() == 1;
+        hidden = buffer_1.readUByte() == 1;
         if (type == 0) {
             int413 = buffer_1.method441();
             int411 = buffer_1.method441();
-            bool44 = buffer_1.method439() == 1;
+            bool44 = buffer_1.readUByte() == 1;
         }
 
         if (type == 5) {
-            int440 = buffer_1.method444();
+            int440 = buffer_1.readInt();
             int446 = buffer_1.method441();
-            bool36 = buffer_1.method439() == 1;
-            int416 = buffer_1.method439();
-            int420 = buffer_1.method439();
-            int450 = buffer_1.method444();
-            bool37 = buffer_1.method439() == 1;
-            bool33 = buffer_1.method439() == 1;
+            bool36 = buffer_1.readUByte() == 1;
+            int416 = buffer_1.readUByte();
+            int420 = buffer_1.readUByte();
+            int450 = buffer_1.readInt();
+            bool37 = buffer_1.readUByte() == 1;
+            bool33 = buffer_1.readUByte() == 1;
         }
 
         if (type == 6) {
@@ -557,8 +557,8 @@ public class Widget extends Node {
             if (int409 == 65535)
                 int409 = -1;
 
-            int427 = buffer_1.method442();
-            int428 = buffer_1.method442();
+            int427 = buffer_1.readShort();
+            int428 = buffer_1.readShort();
             int429 = buffer_1.method441();
             int430 = buffer_1.method441();
             int442 = buffer_1.method441();
@@ -567,7 +567,7 @@ public class Widget extends Node {
             if (int391 == 65535)
                 int391 = -1;
 
-            bool38 = buffer_1.method439() == 1;
+            bool38 = buffer_1.readUByte() == 1;
             buffer_1.method441();
             if (int399 != 0)
                 int432 = buffer_1.method441();
@@ -582,28 +582,28 @@ public class Widget extends Node {
                 int435 = -1;
 
             string25 = buffer_1.method448();
-            int437 = buffer_1.method439();
-            int438 = buffer_1.method439();
-            int439 = buffer_1.method439();
-            bool43 = buffer_1.method439() == 1;
-            int393 = buffer_1.method444();
+            int437 = buffer_1.readUByte();
+            int438 = buffer_1.readUByte();
+            int439 = buffer_1.readUByte();
+            bool43 = buffer_1.readUByte() == 1;
+            int393 = buffer_1.readInt();
         }
 
         if (type == 3) {
-            int393 = buffer_1.method444();
-            bool32 = buffer_1.method439() == 1;
-            int416 = buffer_1.method439();
+            int393 = buffer_1.readInt();
+            bool32 = buffer_1.readUByte() == 1;
+            int416 = buffer_1.readUByte();
         }
 
         if (type == 9) {
-            int424 = buffer_1.method439();
-            int393 = buffer_1.method444();
-            bool39 = buffer_1.method439() == 1;
+            int424 = buffer_1.readUByte();
+            int393 = buffer_1.readInt();
+            bool39 = buffer_1.readUByte() == 1;
         }
 
         int418 = buffer_1.method443();
         string24 = buffer_1.method448();
-        int i_3 = buffer_1.method439();
+        int i_3 = buffer_1.readUByte();
         if (i_3 > 0) {
             stringArray3 = new String[i_3];
 
@@ -611,9 +611,9 @@ public class Widget extends Node {
                 stringArray3[i_4] = buffer_1.method448();
         }
 
-        int443 = buffer_1.method439();
-        int448 = buffer_1.method439();
-        bool40 = buffer_1.method439() == 1;
+        int443 = buffer_1.readUByte();
+        int448 = buffer_1.readUByte();
+        bool40 = buffer_1.readUByte() == 1;
         string26 = buffer_1.method448();
         objectArray7 = method497(buffer_1);
         objectArray10 = method497(buffer_1);
@@ -639,16 +639,16 @@ public class Widget extends Node {
     }
 
     Object[] method497(Buffer buffer_1) {
-        int i_3 = buffer_1.method439();
+        int i_3 = buffer_1.readUByte();
         if (i_3 == 0)
             return null;
         else {
             Object[] arr_4 = new Object[i_3];
 
             for (int i_5 = 0; i_5 < i_3; i_5++) {
-                int i_6 = buffer_1.method439();
+                int i_6 = buffer_1.readUByte();
                 if (i_6 == 0)
-                    arr_4[i_5] = new Integer(buffer_1.method444());
+                    arr_4[i_5] = new Integer(buffer_1.readInt());
                 else if (i_6 == 1)
                     arr_4[i_5] = buffer_1.method448();
             }
@@ -659,14 +659,14 @@ public class Widget extends Node {
     }
 
     int[] method498(Buffer buffer_1) {
-        int i_3 = buffer_1.method439();
+        int i_3 = buffer_1.readUByte();
         if (i_3 == 0)
             return null;
         else {
             int[] ints_4 = new int[i_3];
 
             for (int i_5 = 0; i_5 < i_3; i_5++)
-                ints_4[i_5] = buffer_1.method444();
+                ints_4[i_5] = buffer_1.readInt();
 
             return ints_4;
         }

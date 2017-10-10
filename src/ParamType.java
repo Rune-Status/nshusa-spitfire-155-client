@@ -34,7 +34,7 @@ public class ParamType extends Cacheable {
 
     void decode(Buffer buffer_1) {
         while (true) {
-            int i_3 = buffer_1.method439();
+            int i_3 = buffer_1.readUByte();
             if (i_3 == 0)
                 return;
 
@@ -60,7 +60,7 @@ public class ParamType extends Cacheable {
             char var_4 = (char) i_6;
             type = var_4;
         } else if (i_2 == 2)
-            int594 = buffer_1.method444();
+            int594 = buffer_1.readInt();
         else if (i_2 == 4)
             autodisable = false;
         else if (i_2 == 5)

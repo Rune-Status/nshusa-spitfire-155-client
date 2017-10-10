@@ -9,7 +9,7 @@ public class Varbit extends Cacheable {
 
     public void decode(Buffer buffer_1) {
         while (true) {
-            int i_3 = buffer_1.method439();
+            int i_3 = buffer_1.readUByte();
             if (i_3 == 0)
                 return;
 
@@ -20,8 +20,8 @@ public class Varbit extends Cacheable {
     void decode(Buffer buffer_1, int i_2) {
         if (i_2 == 1) {
             id = buffer_1.method441();
-            startBit = buffer_1.method439();
-            endBit = buffer_1.method439();
+            startBit = buffer_1.readUByte();
+            endBit = buffer_1.readUByte();
         }
 
     }
