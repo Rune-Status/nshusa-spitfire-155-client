@@ -441,6 +441,9 @@ public class Buffer extends Node {
         off -= 4;
         int i_2 = staticMethod376(buf, 0, off);
         int i_3 = readInt();
+
+        System.out.println("uid " + i_3);
+
         return i_2 == i_3;
     }
 
@@ -495,7 +498,7 @@ public class Buffer extends Node {
         buf[off++] = (byte) (i_1 >> 8);
     }
 
-    public int method476() {
+    public int readUShortLE() {
         off += 2;
         return (buf[off - 2] & 0xff) + ((buf[off - 1] & 0xff) << 8);
     }

@@ -501,7 +501,7 @@ public class StaticClass10 {
 
             byte b_6 = -1;
             if ((i_5 & 0x80) != 0) {
-                player_4.int620 = packet_0.method476();
+                player_4.int620 = packet_0.readUShortLE();
                 if (player_4.int620 == 65535)
                     player_4.int620 = -1;
             }
@@ -546,7 +546,7 @@ public class StaticClass10 {
                 player_4.int632 = packet_0.method470();
                 player_4.int614 = packet_0.method470();
                 player_4.int636 = packet_0.method478() + Client.staticInt166;
-                player_4.int635 = packet_0.method476() + Client.staticInt166;
+                player_4.int635 = packet_0.readUShortLE() + Client.staticInt166;
                 player_4.int641 = packet_0.method478();
                 if (player_4.bool76) {
                     player_4.int622 += player_4.int689;
@@ -619,7 +619,7 @@ public class StaticClass10 {
             }
 
             if ((i_5 & 0x10) != 0) {
-                i_7 = packet_0.method476();
+                i_7 = packet_0.readUShortLE();
                 Class6 class6_20 = (Class6) StaticClass26.staticMethod155(Class6.staticMethod175(), packet_0.method439());
                 boolean bool_22 = packet_0.method467() == 1;
                 i_10 = packet_0.method468();
